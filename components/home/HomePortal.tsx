@@ -41,14 +41,14 @@ export function HomePortal() {
       <AnimatedSignalField />
       <div className="relative z-10 mx-auto flex min-h-[calc(100svh-7.5rem)] w-full max-w-5xl flex-col justify-center">
         <section className="mx-auto flex w-full flex-col items-center justify-center text-center">
-          <p className="home-reveal mb-7 text-[10px] uppercase leading-none tracking-[0.42em] text-[var(--muted-foreground)]">
+          <p className="home-reveal mb-7 text-[11px] uppercase leading-none tracking-[0.34em] text-[color:var(--muted-foreground)]">
             [ AI / MOBILE PRODUCTS / APPLIED SOFTWARE ]
           </p>
           <RenowaGlyphMark className="home-reveal" />
-          <h1 className="home-reveal mt-9 text-balance text-xl font-semibold leading-snug text-[var(--foreground)] sm:text-2xl">
-            AI-first products, built from Azerbaijan for the world.
+          <h1 className="home-reveal mt-9 text-balance text-xl font-semibold leading-snug text-[color:var(--foreground)] sm:text-2xl">
+            AI-first products, built  for the world.
           </h1>
-          <p className="home-reveal mt-5 max-w-2xl text-pretty text-xs leading-6 text-[var(--muted-foreground)] sm:text-sm">
+          <p className="home-reveal mt-5 max-w-2xl text-pretty text-xs leading-6 text-[color:var(--muted-foreground)] sm:text-sm">
             Renowa Labs is a small technology lab creating intelligent software for local and global markets.
           </p>
 
@@ -57,32 +57,32 @@ export function HomePortal() {
               <Link
                 key={product.slug}
                 href={`/products/${product.slug}`}
-                className="group inline-flex items-baseline gap-2 rounded-sm px-1 py-1 text-[11px] uppercase tracking-[0.28em] text-[var(--foreground)] transition duration-300 hover:-translate-y-0.5 hover:text-[var(--foreground)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
+                className="group inline-flex items-baseline gap-2 rounded-sm px-1 py-1 text-[12px] uppercase tracking-[0.22em] text-[color:var(--foreground)] transition duration-300 hover:-translate-y-0.5 hover:text-[color:var(--foreground)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
               >
-                <span className="text-[var(--muted-foreground)]">[{String(index + 1).padStart(2, "0")}]</span>
+                <span className="text-[color:var(--muted-foreground)]">[{String(index + 1).padStart(2, "0")}]</span>
                 <span>{product.name}</span>
-                <span className="hidden text-[10px] lowercase tracking-[0.08em] text-[var(--muted-foreground)] sm:inline">
+                <span className="hidden text-[10px] lowercase tracking-[0.08em] text-[color:var(--muted-foreground)] sm:inline">
                   / {product.category}
                 </span>
               </Link>
             ))}
           </div>
-          <div className="home-reveal mt-7 flex flex-wrap justify-center gap-5 text-[11px] uppercase tracking-[0.24em] text-[var(--muted-foreground)]">
+          <div className="home-reveal mt-7 flex flex-wrap justify-center gap-5 text-[12px] uppercase tracking-[0.2em] text-[color:var(--muted-foreground)]">
             <Link
               href="/products"
-              className="transition hover:text-[var(--foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
+              className="transition hover:text-[color:var(--foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
             >
               Products
             </Link>
             <Link
               href="/about"
-              className="transition hover:text-[var(--foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
+              className="transition hover:text-[color:var(--foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
             >
               Team
             </Link>
             <Link
               href="/contact"
-              className="transition hover:text-[var(--foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
+              className="transition hover:text-[color:var(--foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
             >
               Contact
             </Link>

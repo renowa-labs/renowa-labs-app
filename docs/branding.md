@@ -1,13 +1,13 @@
 # Renowa Labs Brand System
 
 ## Brand Overview
-Renowa Labs is a small technology and product lab from Azerbaijan. The brand should feel calm, sharp, technical, and product-driven. It should make the team feel real, focused, and capable without pretending to be a large corporation.
+Renowa Labs is a small technology and product lab . The brand should feel calm, sharp, technical, and product-driven. It should make the team feel real, focused, and capable without pretending to be a large corporation.
 
 ## Mission
 Build intelligent software products that solve focused problems for local and global markets.
 
 ## Positioning
-AI-first products, built from Azerbaijan for the world.
+AI-first products, built  for the world.
 
 Core Azerbaijani sentence:
 "Biz Renowa Labs olaraq yerli ve qlobal bazar ucun texnoloji, esasen Suni Intellekt agirliqli heller uzerinde calisiriq."
@@ -41,7 +41,7 @@ Avoid:
 
 ## Messaging Examples
 Homepage line:
-"AI-first products, built from Azerbaijan for the world."
+"AI-first products, built  for the world."
 
 Supporting line:
 "Renowa Labs is a small technology lab creating intelligent software for local and global markets."
@@ -137,7 +137,7 @@ Each product card should include:
 ## Do And Don't Examples
 Do:
 - "Small team. Sharp products."
-- "AI-first products, built from Azerbaijan for the world."
+- "AI-first products, built  for the world."
 - "Built for real users, not just demos."
 
 Don't:

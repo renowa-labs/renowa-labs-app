@@ -32,18 +32,21 @@ export function RouteRail() {
   useGSAP(
     () => {
       const items = gsap.utils.toArray<HTMLElement>(".route-rail-item", scope.current);
-      const line = scope.current?.querySelector<HTMLElement>(".route-rail-line") ?? null;
+      const stems = gsap.utils.toArray<HTMLElement>(".route-rail-stem", scope.current);
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      if (!line) return;
-
       if (reduceMotion) {
-        gsap.set([items, line], { opacity: open ? 1 : 0, x: 0, scaleY: open ? 1 : 0 });
+        gsap.set(items, { opacity: open ? 1 : 0, x: 0 });
+        gsap.set(stems, { opacity: open ? 1 : 0, scaleY: open ? 1 : 0 });
         return;
       }
 
       if (open) {
-        gsap.fromTo(line, { opacity: 0, scaleY: 0 }, { opacity: 1, scaleY: 1, duration: 0.28, ease: "power2.out" });
+        gsap.fromTo(
+          stems,
+          { opacity: 0, scaleY: 0 },
+          { opacity: 1, scaleY: 1, duration: 0.28, ease: "power2.out", stagger: 0.025 },
+        );
         gsap.fromTo(
           items,
           { opacity: 0, x: -12 },
@@ -51,7 +54,7 @@ export function RouteRail() {
         );
       } else {
         gsap.to(items, { opacity: 0, x: -10, duration: 0.16, ease: "power2.in", stagger: { each: 0.018, from: "end" } });
-        gsap.to(line, { opacity: 0, scaleY: 0, duration: 0.2, ease: "power2.in" });
+        gsap.to(stems, { opacity: 0, scaleY: 0, duration: 0.2, ease: "power2.in", stagger: { each: 0.014, from: "end" } });
       }
     },
     { scope, dependencies: [open] },
@@ -71,7 +74,7 @@ export function RouteRail() {
         type="button"
         aria-expanded={open}
         aria-controls="renowa-route-rail"
-        className="group flex min-h-11 items-center gap-3 rounded-full border border-[var(--border)] bg-[var(--control-bg)] px-3 text-[10px] uppercase tracking-[0.22em] text-[var(--foreground)] shadow-[0_14px_50px_rgba(0,0,0,0.2)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-[rgba(127,127,127,0.38)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
+        className="group flex min-h-11 items-center gap-3 rounded-full border border-[var(--border)] bg-[var(--control-bg)] px-3 text-[12px] uppercase tracking-[0.2em] text-[color:var(--foreground)] shadow-[0_14px_50px_rgba(0,0,0,0.2)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-[rgba(127,127,127,0.38)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
         onClick={() => setOpen((value) => !value)}
       >
         <span className="relative grid size-5 place-items-center rounded-full border border-[var(--border)]">
@@ -89,7 +92,7 @@ export function RouteRail() {
           />
         </span>
         <span>{open ? "Close" : "Routes"}</span>
-        <span className="hidden max-w-20 truncate text-[9px] text-[var(--muted-foreground)] sm:inline">
+        <span className="hidden max-w-20 truncate text-[10px] text-[color:var(--muted-foreground)] sm:inline">
           / {activeLabel}
         </span>
       </button>
@@ -102,10 +105,12 @@ export function RouteRail() {
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
         )}
       >
-        <div className="route-rail-line absolute bottom-3 left-2 top-3 w-px origin-top bg-[var(--border)] opacity-0" />
-        <div className="grid gap-2 pl-7">
+        <div className="grid gap-1">
           {routeItems.map((item, index) => {
             const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`));
+            const isFirst = index === 0;
+            const isLastMain = index === routeItems.length - 1;
+
             return (
               <Link
                 key={item.href}
@@ -114,23 +119,35 @@ export function RouteRail() {
                 onClick={() => setOpen(false)}
                 tabIndex={open ? undefined : -1}
                 className={cn(
-                  "route-rail-item group relative flex min-h-9 items-center gap-3 rounded-full border border-transparent px-3 text-[11px] uppercase tracking-[0.2em] opacity-0 transition duration-300 hover:translate-x-1 hover:border-[var(--border)] hover:bg-[var(--control-bg)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]",
+                  "route-rail-item group grid min-h-11 grid-cols-[1rem_2.5rem_1fr] items-center gap-3 rounded-full border border-transparent px-3 text-[12px] uppercase tracking-[0.18em] opacity-0 transition duration-300 hover:translate-x-1 hover:border-[var(--border)] hover:bg-[var(--control-bg)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]",
                   active
-                    ? "border-[var(--border)] bg-[var(--control-bg)] text-[var(--foreground)]"
-                    : "text-[var(--muted-foreground)]",
+                    ? "border-[var(--border)] bg-[var(--control-bg)] text-[color:var(--foreground)]"
+                    : "text-[color:var(--muted-foreground)]",
                 )}
               >
-                <span className="absolute -left-[1.55rem] size-2 rounded-full border border-[var(--border)] bg-[var(--background)] transition group-hover:scale-125" />
-                <span className="text-[9px] tabular-nums text-[var(--muted-foreground)]">
+                <span className="relative flex h-full items-center justify-center" aria-hidden="true">
+                  <span
+                    className={cn(
+                      "route-rail-stem absolute left-1/2 w-px -translate-x-1/2 origin-center bg-[var(--border)] opacity-0",
+                      isFirst && "bottom-0 top-1/2",
+                      isLastMain && "bottom-1/2 top-0 sm:bottom-0",
+                      !isFirst && !isLastMain && "inset-y-0",
+                    )}
+                  />
+                  <span className="relative z-10 size-2 rounded-full border border-[var(--border)] bg-[var(--background)] transition group-hover:scale-125" />
+                </span>
+                <span className="text-[10px] tabular-nums text-[color:var(--muted-foreground)]">
                   {String(index).padStart(2, "0")}
                 </span>
                 <span>{item.label}</span>
               </Link>
             );
           })}
-          {products.map((product) => {
+          {products.map((product, productIndex) => {
             const href = `/products/${product.slug}`;
             const active = pathname === href;
+            const isLastProduct = productIndex === products.length - 1;
+
             return (
               <Link
                 key={product.slug}
@@ -139,14 +156,22 @@ export function RouteRail() {
                 onClick={() => setOpen(false)}
                 tabIndex={open ? undefined : -1}
                 className={cn(
-                  "route-rail-item group relative ml-6 hidden min-h-8 items-center gap-3 rounded-full border border-transparent px-3 text-[10px] uppercase tracking-[0.18em] opacity-0 transition duration-300 hover:translate-x-1 hover:border-[var(--border)] hover:bg-[var(--control-bg)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)] sm:flex",
+                  "route-rail-item group hidden min-h-10 grid-cols-[1rem_2.5rem_1fr] items-center gap-3 rounded-full border border-transparent px-3 text-[11px] uppercase tracking-[0.16em] opacity-0 transition duration-300 hover:translate-x-1 hover:border-[var(--border)] hover:bg-[var(--control-bg)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)] sm:ml-6 sm:grid",
                   active
-                    ? "border-[var(--border)] bg-[var(--control-bg)] text-[var(--foreground)]"
-                    : "text-[var(--muted-foreground)]",
+                    ? "border-[var(--border)] bg-[var(--control-bg)] text-[color:var(--foreground)]"
+                    : "text-[color:var(--muted-foreground)]",
                 )}
               >
-                <span className="absolute -left-[2.35rem] size-1.5 rounded-full border border-[var(--border)] bg-[var(--background)] transition group-hover:scale-125" />
-                <span className="text-[9px]">{product.icon}</span>
+                <span className="relative flex h-full items-center justify-center" aria-hidden="true">
+                  <span
+                    className={cn(
+                      "route-rail-stem absolute left-1/2 w-px -translate-x-1/2 origin-center bg-[var(--border)] opacity-0",
+                      isLastProduct ? "bottom-1/2 top-0" : "inset-y-0",
+                    )}
+                  />
+                  <span className="relative z-10 size-1.5 rounded-full border border-[var(--border)] bg-[var(--background)] transition group-hover:scale-125" />
+                </span>
+                <span className="text-[10px]">{product.icon}</span>
                 <span>{product.name}</span>
               </Link>
             );

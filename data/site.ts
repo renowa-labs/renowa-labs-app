@@ -6,7 +6,7 @@ export const SITE_DESCRIPTION =
   "Renowa Labs is a small technology lab building AI-first software products for local and global markets.";
 
 export const SITE_POSITIONING =
-  "AI-first products, built from Azerbaijan for the world.";
+  "AI-first products, built  for the world.";
 
 // TODO: Replace with the real Renowa Labs contact email.
 export const CONTACT_EMAIL = "hello@renowalabs.com";

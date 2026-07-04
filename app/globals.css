@@ -77,7 +77,7 @@ a {
 button,
 input,
 textarea {
-  font: inherit;
+  font-family: inherit;
 }
 
 ::selection {
@@ -103,6 +103,174 @@ textarea {
   outline-offset: 4px;
 }
 
+.button-primary {
+  border-color: var(--foreground);
+  background: var(--foreground);
+  color: var(--background) !important;
+}
+
+.button-primary:hover {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--background) !important;
+}
+
+.button-primary svg,
+.button-primary * {
+  color: inherit;
+}
+
+.button-secondary {
+  border-color: var(--border);
+  background: transparent;
+  color: var(--foreground) !important;
+}
+
+.button-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--foreground) !important;
+}
+
+:root[data-theme="light"] .button-secondary:hover {
+  border-color: rgba(23, 23, 23, 0.24);
+  background: rgba(23, 23, 23, 0.04);
+}
+
+.button-secondary svg,
+.button-secondary * {
+  color: inherit;
+}
+
+.button-ghost {
+  border-color: transparent;
+  background: transparent;
+  color: var(--muted-foreground) !important;
+}
+
+.button-ghost:hover {
+  color: var(--foreground) !important;
+}
+
+.theme-logo-light {
+  display: none;
+}
+
+:root[data-theme="light"] .theme-logo-dark {
+  display: none;
+}
+
+:root[data-theme="light"] .theme-logo-light {
+  display: block;
+}
+
+.glyph-row {
+  isolation: isolate;
+}
+
+.glyph-letter::before,
+.glyph-letter::after {
+  content: attr(data-letter);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--foreground);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glyph-letter::before {
+  clip-path: inset(18% 0 56% 0);
+}
+
+.glyph-letter::after {
+  clip-path: inset(58% 0 18% 0);
+}
+
+.glyph-letter:hover::before,
+.glyph-letter:focus-visible::before {
+  animation: glyph-signal-upper 520ms steps(2, end);
+}
+
+.glyph-letter:hover::after,
+.glyph-letter:focus-visible::after {
+  animation: glyph-signal-lower 520ms steps(2, end);
+}
+
+.glyph-letter:hover .glyph-letter-core,
+.glyph-letter:focus-visible .glyph-letter-core {
+  animation: glyph-signal-core 520ms steps(2, end);
+}
+
+@keyframes glyph-signal-upper {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  14% {
+    opacity: 0.65;
+    transform: translateX(-0.08em);
+  }
+  28% {
+    opacity: 0.18;
+    transform: translateX(0.06em);
+  }
+  42% {
+    opacity: 0.5;
+    transform: translateX(-0.04em);
+  }
+  58% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glyph-signal-lower {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  12% {
+    opacity: 0.42;
+    transform: translateX(0.1em);
+  }
+  30% {
+    opacity: 0.2;
+    transform: translateX(-0.06em);
+  }
+  46% {
+    opacity: 0.55;
+    transform: translateX(0.045em);
+  }
+  62% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glyph-signal-core {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(0.95);
+  }
+  16% {
+    opacity: 0.55;
+    transform: translateY(-0.01em) scale(0.95);
+  }
+  32% {
+    opacity: 1;
+    transform: translateY(0.01em) scale(0.95);
+  }
+  48% {
+    opacity: 0.72;
+    transform: translateY(0) scale(0.95);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -111,5 +279,11 @@ textarea {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .glyph-letter:hover::before,
+  .glyph-letter:hover::after,
+  .glyph-letter:hover .glyph-letter-core {
+    animation: none;
   }
 }

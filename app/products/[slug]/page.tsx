@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/site/Footer";
+import { AppStoreIcon } from "@/components/ui/AppStoreIcon";
 import { ButtonLink, buttonClassName } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { getProduct, getRelatedProducts, products } from "@/data/products";
@@ -38,9 +39,9 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
       images: [
         {
           url: product.screenshotPlaceholder,
-          width: 720,
-          height: 520,
-          alt: `${product.name} product visual`,
+          width: product.iconImage ? 1024 : 720,
+          height: product.iconImage ? 1024 : 520,
+          alt: product.iconImage ? `${product.name} app icon` : `${product.name} product visual`,
         },
       ],
     },
@@ -69,7 +70,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
         <Container className="pb-20">
           <Link
             href="/products"
-            className="mb-8 inline-flex rounded-full text-sm font-medium text-[var(--muted-foreground)] transition hover:text-[var(--foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
+            className="mb-8 inline-flex rounded-full text-sm font-medium text-[color:var(--muted-foreground)] transition hover:text-[color:var(--foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
           >
             Back to products
           </Link>
@@ -80,19 +81,19 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                 {[product.platform, product.status, product.category].map((item) => (
                   <span
                     key={item}
-                    className="rounded-sm border border-[var(--border)] px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-[var(--muted-foreground)]"
+                    className="rounded-sm border border-[var(--border)] px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-[color:var(--muted-foreground)]"
                   >
                     {item}
                   </span>
                 ))}
               </div>
-              <h1 className="mt-6 text-balance text-3xl font-semibold leading-[1.06] text-[var(--foreground)] sm:text-5xl">
+              <h1 className="mt-6 text-balance text-3xl font-semibold leading-[1.06] text-[color:var(--foreground)] sm:text-5xl">
                 {product.name}
               </h1>
-              <p className="mt-5 max-w-2xl text-pretty text-sm leading-7 text-[var(--muted-foreground)]">
+              <p className="mt-5 max-w-2xl text-pretty text-sm leading-7 text-[color:var(--muted-foreground)]">
                 {product.shortDescription}
               </p>
-              <p className="mt-8 max-w-2xl text-sm leading-7 text-[var(--muted-foreground)]">
+              <p className="mt-8 max-w-2xl text-sm leading-7 text-[color:var(--muted-foreground)]">
                 {product.longDescription}
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -100,6 +101,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                   href={product.appStoreUrl}
                   className={buttonClassName({ variant: "primary", className: "w-full sm:w-auto" })}
                 >
+                  <AppStoreIcon className="size-4 shrink-0" />
                   Open App Store
                 </a>
                 <ButtonLink href="/contact" variant="secondary" className="w-full sm:w-auto">
@@ -108,27 +110,52 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               </div>
             </div>
 
-            <div className="rounded-[6px] border border-[var(--border)] bg-[rgba(255,255,255,0.018)] p-3">
-              <Image
-                src={product.screenshotPlaceholder}
-                alt={`${product.name} interface placeholder`}
-                width={720}
-                height={520}
-                className="aspect-[720/520] w-full rounded-[6px] object-cover"
-              />
-            </div>
+            {product.iconImage ? (
+              <div className="grid min-h-[24rem] place-items-center rounded-[6px] border border-[var(--border)] bg-[rgba(255,255,255,0.018)] p-8">
+                <div className="grid gap-5 text-center">
+                  <Image
+                    src={product.iconImage}
+                    alt={`${product.name} app icon`}
+                    width={168}
+                    height={168}
+                    priority
+                    className="mx-auto size-36 rounded-[28px] object-cover shadow-[0_24px_80px_rgba(0,0,0,0.24)] sm:size-[10.5rem]"
+                  />
+                  <div>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[color:var(--muted-foreground)]">
+                      App Store
+                    </p>
+                    <p className="mt-2 text-sm font-semibold uppercase tracking-[0.16em] text-[color:var(--foreground)]">
+                      {product.name}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="rounded-[6px] border border-[var(--border)] bg-[rgba(255,255,255,0.018)] p-3">
+                <Image
+                  src={product.screenshotPlaceholder}
+                  alt={`${product.name} interface placeholder`}
+                  width={720}
+                  height={520}
+                  className="aspect-[720/520] w-full rounded-[6px] object-cover"
+                />
+              </div>
+            )}
           </section>
 
           <section className="mt-16 grid gap-8 lg:grid-cols-[0.7fr_1fr]">
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-[var(--muted-foreground)]">Features</p>
-              <h2 className="mt-4 text-3xl font-semibold text-[var(--foreground)]">Built around focused use.</h2>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-[color:var(--muted-foreground)]">Features</p>
+              <h2 className="mt-4 text-3xl font-semibold text-[color:var(--foreground)]">
+                {product.featureHeading ?? "Built around focused use."}
+              </h2>
             </div>
             <ul className="grid gap-3 sm:grid-cols-2">
               {product.features.map((feature) => (
                 <li
                   key={feature}
-                  className="rounded-[6px] border border-[var(--border)] bg-[rgba(255,255,255,0.018)] p-4 text-xs leading-6 text-[var(--foreground)]"
+                  className="rounded-[6px] border border-[var(--border)] bg-[rgba(255,255,255,0.018)] p-4 text-xs leading-6 text-[color:var(--foreground)]"
                 >
                   {feature}
                 </li>
@@ -140,8 +167,8 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             <section className="mt-16 border-t border-[var(--border)] pt-10">
               <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-[var(--muted-foreground)]">Related</p>
-                  <h2 className="mt-3 text-2xl font-semibold text-[var(--foreground)]">More from the lab</h2>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-[color:var(--muted-foreground)]">Related</p>
+                  <h2 className="mt-3 text-2xl font-semibold text-[color:var(--foreground)]">More from the lab</h2>
                 </div>
                 <ButtonLink href="/products" variant="ghost">
                   View all products
@@ -154,8 +181,8 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                     href={`/products/${related.slug}`}
                     className="rounded-[6px] border border-[var(--border)] bg-[rgba(255,255,255,0.018)] p-5 transition hover:border-[rgba(255,255,255,0.28)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
                   >
-                    <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--foreground)]">{related.name}</h3>
-                    <p className="mt-2 text-xs leading-6 text-[var(--muted-foreground)]">
+                    <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--foreground)]">{related.name}</h3>
+                    <p className="mt-2 text-xs leading-6 text-[color:var(--muted-foreground)]">
                       {related.shortDescription}
                     </p>
                   </Link>

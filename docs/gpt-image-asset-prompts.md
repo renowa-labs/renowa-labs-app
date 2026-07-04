@@ -3,7 +3,7 @@
 Use these prompts to create future Renowa Labs bitmap assets. Keep results calm, technical, minimal, and suitable for a refined software lab. Avoid generic robots, brains, circuit boards, overused neon cyberpunk styling, and obvious flag imagery.
 
 ## Abstract Renowa Labs Hero Visual
-Create an abstract hero visual for Renowa Labs, a small AI-first software product lab from Azerbaijan. Use a flat charcoal background, monochrome terminal-like marks, quiet geometric structure, and soft depth. The image should feel calm, technical, intelligent, and product-driven. No robots, no brain icons, no circuit board patterns, no bright glow.
+Create an abstract hero visual for Renowa Labs, a small AI-first software product lab . Use a flat charcoal background, monochrome terminal-like marks, quiet geometric structure, and soft depth. The image should feel calm, technical, intelligent, and product-driven. No robots, no brain icons, no circuit board patterns, no bright glow.
 
 ## App Store Product Showcase Mockup
 Create a polished App Store product showcase mockup for a small software lab. Show three iPhone-style app screens with minimal UI, dark charcoal surfaces, grayscale accents, and clear product-focused composition. Keep the screens generic and replaceable. Avoid fake App Store badges, brand names from other companies, robots, brains, and loud marketing visuals.

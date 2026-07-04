@@ -8,33 +8,38 @@ export type Product = {
   platform: string;
   appStoreUrl: string;
   accent: string;
+  featureHeading?: string;
   features: string[];
   year: string;
   icon: string;
+  iconImage?: string;
   screenshotPlaceholder: string;
 };
 
 export const products = [
   {
-    slug: "signal-notes",
-    name: "Signal Notes",
-    shortDescription: "Capture rough thinking and turn it into structured notes.",
+    slug: "save-more-dreams",
+    name: "Save More Dreams",
+    shortDescription: "Take control of impulse spending. Pause, reflect, and save more.",
     longDescription:
-      "Signal Notes is a focused mobile workspace for people who collect ideas quickly and need clean summaries, tags, and next steps without losing momentum.",
-    category: "AI writing",
-    status: "App Store placeholder",
+      "Save helps you pause before impulse purchases and build smarter spending habits. When you feel the urge to buy something, Save guides you through a quick reflection, helping you understand why you want it, whether it aligns with your goals, and if it is truly worth it.",
+    category: "Personal finance",
+    status: "Live on App Store",
     platform: "iOS",
-    appStoreUrl: "#", // TODO: Replace with the real App Store URL.
-    accent: "#d8d8d2",
+    appStoreUrl: "https://apps.apple.com/us/app/save-more-dreams/id6764151038",
+    accent: "#ff6a00",
+    featureHeading: "Pause before impulse purchases.",
     features: [
-      "Fast idea capture",
-      "AI-assisted summaries",
-      "Simple tagging flow",
-      "Export-ready note structure",
+      "Pause any purchase and reflect before deciding",
+      "Save items to your wishlist and revisit them later",
+      "Set a personal savings goal and track daily progress",
+      "See exactly how much money you've resisted spending",
+      "Get daily reminders to keep your streak going",
     ],
     year: "2026",
-    icon: "SN",
-    screenshotPlaceholder: "/brand/renowa-product-placeholder.svg",
+    icon: "SMD",
+    iconImage: "/products/save-more-dreams/icon.png",
+    screenshotPlaceholder: "/products/save-more-dreams/icon.png",
   },
   {
     slug: "local-lens",

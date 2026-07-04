@@ -59,7 +59,7 @@ export function ThemeToggle() {
   return (
     <button
       type="button"
-      className="group inline-flex items-center gap-2 rounded-sm text-[10px] uppercase tracking-[0.34em] text-[var(--muted-foreground)] transition hover:text-[var(--foreground)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
+      className="cursor-pointer group inline-flex items-center gap-2 rounded-sm text-[11px] uppercase tracking-[0.28em] text-[color:var(--muted-foreground)] transition hover:text-[color:var(--foreground)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
       onClick={() => {
         const nextTheme = theme === "dark" ? "light" : "dark";

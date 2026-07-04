@@ -38,35 +38,35 @@ export default function ContactPage() {
                   Explore products
                 </ButtonLink>
               </div>
-              <p className="mt-5 text-sm text-[var(--muted-foreground)]">{CONTACT_EMAIL}</p>
+              <p className="mt-5 text-sm text-[color:var(--muted-foreground)]">{CONTACT_EMAIL}</p>
             </div>
 
             <form className="rounded-[6px] border border-[var(--border)] bg-[rgba(255,255,255,0.018)] p-5 sm:p-6">
               <div className="grid gap-4">
-                <label className="grid gap-2 text-sm font-medium text-[var(--foreground)]">
+                <label className="grid gap-2 text-sm font-medium text-[color:var(--foreground)]">
                   Name
                   <input
                     type="text"
                     name="name"
-                    className="min-h-12 rounded-[4px] border border-[var(--border)] bg-[rgba(0,0,0,0.12)] px-4 text-[var(--foreground)] outline-none transition placeholder:text-[rgba(140,140,135,0.7)] focus:border-[rgba(255,255,255,0.38)]"
+                    className="min-h-12 rounded-[4px] border border-[var(--border)] bg-[rgba(0,0,0,0.12)] px-4 text-[color:var(--foreground)] outline-none transition placeholder:text-[rgba(140,140,135,0.7)] focus:border-[rgba(255,255,255,0.38)]"
                     placeholder="Your name"
                   />
                 </label>
-                <label className="grid gap-2 text-sm font-medium text-[var(--foreground)]">
+                <label className="grid gap-2 text-sm font-medium text-[color:var(--foreground)]">
                   Email
                   <input
                     type="email"
                     name="email"
-                    className="min-h-12 rounded-[4px] border border-[var(--border)] bg-[rgba(0,0,0,0.12)] px-4 text-[var(--foreground)] outline-none transition placeholder:text-[rgba(140,140,135,0.7)] focus:border-[rgba(255,255,255,0.38)]"
+                    className="min-h-12 rounded-[4px] border border-[var(--border)] bg-[rgba(0,0,0,0.12)] px-4 text-[color:var(--foreground)] outline-none transition placeholder:text-[rgba(140,140,135,0.7)] focus:border-[rgba(255,255,255,0.38)]"
                     placeholder="you@example.com"
                   />
                 </label>
-                <label className="grid gap-2 text-sm font-medium text-[var(--foreground)]">
+                <label className="grid gap-2 text-sm font-medium text-[color:var(--foreground)]">
                   Message
                   <textarea
                     name="message"
                     rows={6}
-                    className="resize-none rounded-[4px] border border-[var(--border)] bg-[rgba(0,0,0,0.12)] px-4 py-3 text-[var(--foreground)] outline-none transition placeholder:text-[rgba(140,140,135,0.7)] focus:border-[rgba(255,255,255,0.38)]"
+                    className="resize-none rounded-[4px] border border-[var(--border)] bg-[rgba(0,0,0,0.12)] px-4 py-3 text-[color:var(--foreground)] outline-none transition placeholder:text-[rgba(140,140,135,0.7)] focus:border-[rgba(255,255,255,0.38)]"
                     placeholder="Tell us what you are thinking about."
                   />
                 </label>

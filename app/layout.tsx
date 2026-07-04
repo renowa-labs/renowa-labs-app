@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: SITE_NAME,
   title: {
-    default: "Renowa Labs - AI-first products from Azerbaijan",
+    default: "Renowa Labs - AI-first products ",
     template: "%s | Renowa Labs",
   },
   description: SITE_DESCRIPTION,
@@ -33,25 +33,30 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: "Renowa Labs - AI-first products from Azerbaijan",
+    title: "Renowa Labs - AI-first products ",
     description: SITE_DESCRIPTION,
     images: [
       {
         url: "/og/renowa-og.svg",
         width: 1200,
         height: 630,
-        alt: "Renowa Labs - AI-first products from Azerbaijan",
+        alt: "Renowa Labs - AI-first products ",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Renowa Labs - AI-first products from Azerbaijan",
+    title: "Renowa Labs - AI-first products ",
     description: SITE_DESCRIPTION,
     images: ["/og/renowa-og.svg"],
   },
   icons: {
-    icon: "/brand/renowa-symbol.svg",
+    icon: [
+      { url: "/logo/png/renowa-small-logo-dark-rounded-bg.png", sizes: "600x600", type: "image/png" },
+      { url: "/logo/svg/renowa-small-logo-dark-rounded-bg.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/logo/png/renowa-small-logo-dark-rounded-bg.png",
+    apple: [{ url: "/logo/png/renowa-small-logo-dark-rounded-bg.png", sizes: "600x600", type: "image/png" }],
   },
 };
 

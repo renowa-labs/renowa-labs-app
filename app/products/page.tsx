@@ -7,7 +7,7 @@ import { products } from "@/data/products";
 
 export const metadata: Metadata = {
   title: "Products",
-  description: "Products from Renowa Labs, a small AI-first software lab from Azerbaijan.",
+  description: "Products from Renowa Labs, a small AI-first software lab .",
   alternates: {
     canonical: "/products",
   },
