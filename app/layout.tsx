@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/site/Header";
 import { PageTransition } from "@/components/site/PageTransition";
-import { RouteRail } from "@/components/site/RouteRail";
 import { CONTACT_EMAIL, SITE_DESCRIPTION, SITE_NAME, SITE_POSITIONING, SITE_URL } from "@/data/site";
 
 const geistSans = localFont({
@@ -103,7 +102,6 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <Header />
         <PageTransition>{children}</PageTransition>
-        <RouteRail />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

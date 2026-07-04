@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { type CSSProperties, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import type { Product } from "@/data/products";
@@ -11,6 +11,9 @@ import { buttonClassName } from "@/components/ui/Button";
 
 export function ProductCard({ product }: { product: Product }) {
   const scope = useRef<HTMLElement>(null);
+  const launchUrl = product.launchUrl ?? product.appStoreUrl;
+  const launchLabel = product.launchLabel ?? "App Store";
+  const launchStyle = { "--product-accent": product.accent } as CSSProperties;
 
   useGSAP(
     () => {
@@ -70,12 +73,13 @@ export function ProductCard({ product }: { product: Product }) {
       </div>
       <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
         <a
-          href={product.appStoreUrl}
-          className={buttonClassName({ variant: "secondary", className: "w-full sm:w-auto" })}
-          aria-label={`Open ${product.name} on the App Store`}
+          href={launchUrl}
+          style={launchStyle}
+          className={buttonClassName({ variant: "secondary", className: "product-launch-button w-full sm:w-auto" })}
+          aria-label={`Open ${product.name} ${launchLabel}`}
         >
-          <AppStoreIcon className="size-4 shrink-0" />
-          App Store
+          {product.launchIcon !== "none" ? <AppStoreIcon className="size-4 shrink-0" /> : null}
+          {launchLabel}
         </a>
         <Link
           href={`/products/${product.slug}`}

@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { products } from "@/data/products";
 import { AnimatedSignalField } from "@/components/brand/AnimatedSignalField";
+import { HackerNewsTicker } from "@/components/home/HackerNewsTicker";
 import { RenowaGlyphMark } from "@/components/brand/RenowaGlyphMark";
 
 export function HomePortal() {
@@ -36,10 +37,10 @@ export function HomePortal() {
   return (
     <main
       ref={scope}
-      className="relative flex min-h-svh overflow-hidden px-5 pb-6 pt-24 sm:px-8 lg:px-10"
+      className="relative flex h-svh overflow-hidden px-5 pb-24 pt-24 sm:px-8 lg:px-10"
     >
       <AnimatedSignalField />
-      <div className="relative z-10 mx-auto flex min-h-[calc(100svh-7.5rem)] w-full max-w-5xl flex-col justify-center">
+      <div className="relative z-10 mx-auto flex min-h-0 w-full max-w-5xl flex-1 flex-col justify-center">
         <section className="mx-auto flex w-full flex-col items-center justify-center text-center">
           <p className="home-reveal mb-7 text-[11px] uppercase leading-none tracking-[0.34em] text-[color:var(--muted-foreground)]">
             [ AI / MOBILE PRODUCTS / APPLIED SOFTWARE ]
@@ -89,6 +90,7 @@ export function HomePortal() {
           </div>
         </section>
       </div>
+      <HackerNewsTicker />
     </main>
   );
 }

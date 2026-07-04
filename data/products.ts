@@ -7,6 +7,9 @@ export type Product = {
   status: string;
   platform: string;
   appStoreUrl: string;
+  launchUrl?: string;
+  launchLabel?: string;
+  launchIcon?: "app-store" | "none";
   accent: string;
   featureHeading?: string;
   features: string[];
@@ -14,6 +17,16 @@ export type Product = {
   icon: string;
   iconImage?: string;
   screenshotPlaceholder: string;
+  preview?: {
+    frame: "mobile" | "web";
+    eyebrow: string;
+    heading: string;
+    description: string;
+    videoUrl?: string;
+    posterImage?: string;
+    caption?: string;
+    steps: string[];
+  };
 };
 
 export const products = [
@@ -40,6 +53,16 @@ export const products = [
     icon: "SMD",
     iconImage: "/products/save-more-dreams/icon.png",
     screenshotPlaceholder: "/products/save-more-dreams/icon.png",
+    preview: {
+      frame: "mobile",
+      eyebrow: "Video preview",
+      heading: "A calmer purchase pause, shown step by step.",
+      description:
+        "Use this section for a short product walkthrough. For mobile apps, the preview appears inside a phone-shaped frame so the experience feels native to the product.",
+      posterImage: "/products/save-more-dreams/icon.png",
+      caption: "Preview slot for the Save More Dreams walkthrough.",
+      steps: ["Open the pause flow", "Reflect before buying", "Track the money kept"],
+    },
   },
   {
     slug: "local-lens",
@@ -61,6 +84,16 @@ export const products = [
     year: "2025",
     icon: "LL",
     screenshotPlaceholder: "/brand/renowa-product-placeholder.svg",
+    preview: {
+      frame: "mobile",
+      eyebrow: "Video preview",
+      heading: "Show the product flow before people install it.",
+      description:
+        "Mobile products can use a vertical app walkthrough here. Add a video file later and this section will become the live preview.",
+      posterImage: "/brand/renowa-product-placeholder.svg",
+      caption: "Preview slot for Local Lens.",
+      steps: ["Capture context", "Review compact answers", "Save the useful parts"],
+    },
   },
   {
     slug: "task-frame",
@@ -82,13 +115,23 @@ export const products = [
     year: "2026",
     icon: "TF",
     screenshotPlaceholder: "/brand/renowa-product-placeholder.svg",
+    preview: {
+      frame: "web",
+      eyebrow: "Video preview",
+      heading: "A flexible frame for web products and desktop tools.",
+      description:
+        "Website and web-app products use a wider browser-style preview, while mobile apps can keep the phone frame. The content is controlled per product.",
+      posterImage: "/brand/renowa-product-placeholder.svg",
+      caption: "Preview slot for Task Frame.",
+      steps: ["Shape the task", "Review milestones", "Share the snapshot"],
+    },
   },
 ] satisfies Product[];
 
-export function getProduct(slug: string) {
+export function getProduct(slug: string): Product | undefined {
   return products.find((product) => product.slug === slug);
 }
 
-export function getRelatedProducts(slug: string) {
+export function getRelatedProducts(slug: string): Product[] {
   return products.filter((product) => product.slug !== slug).slice(0, 2);
 }
