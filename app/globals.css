@@ -1,8 +1,39 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #1a1a1a;
+  --foreground: #e7e7e2;
+  --surface: #202020;
+  --surface-elevated: #262626;
+  --muted: #151515;
+  --muted-foreground: #8c8c87;
+  --border: rgba(232, 232, 224, 0.13);
+  --accent: #d8d8d2;
+  --accent-soft: rgba(232, 232, 224, 0.07);
+  --glow: rgba(232, 232, 224, 0.1);
+  --field-spot: rgba(255, 255, 255, 0.025);
+  --field-wash: rgba(255, 255, 255, 0.015);
+  --grid-line: rgba(255, 255, 255, 0.035);
+  --control-bg: rgba(31, 31, 31, 0.9);
+  --control-bg-strong: rgba(31, 31, 31, 0.98);
+}
+
+:root[data-theme="light"] {
+  --background: #efeee8;
   --foreground: #171717;
+  --surface: #e5e3dc;
+  --surface-elevated: #dbd8cf;
+  --muted: #f7f5ef;
+  --muted-foreground: #6d6a63;
+  --border: rgba(23, 23, 23, 0.14);
+  --accent: #171717;
+  --accent-soft: rgba(23, 23, 23, 0.07);
+  --glow: rgba(23, 23, 23, 0.1);
+  --field-spot: rgba(0, 0, 0, 0.045);
+  --field-wash: rgba(0, 0, 0, 0.018);
+  --grid-line: rgba(0, 0, 0, 0.04);
+  --control-bg: rgba(239, 238, 232, 0.9);
+  --control-bg-strong: rgba(239, 238, 232, 0.98);
 }
 
 @theme inline {
@@ -12,15 +43,73 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-padding-top: 6rem;
+  background: var(--background);
 }
 
 body {
-  background: var(--background);
+  min-height: 100%;
+  overflow-x: clip;
+  background:
+    radial-gradient(circle at 50% 44%, var(--field-spot), transparent 30rem),
+    linear-gradient(180deg, var(--field-wash), transparent 18rem),
+    var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-mono), "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  letter-spacing: 0;
+}
+
+body[data-menu-open] {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--foreground);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+.page-shell {
+  min-height: 100svh;
+  padding-top: 7rem;
+}
+
+.focus-ring {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
