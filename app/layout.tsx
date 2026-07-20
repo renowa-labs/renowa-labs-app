@@ -51,11 +51,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/logo/png/renowa-small-logo-dark-rounded-bg.png", sizes: "600x600", type: "image/png" },
-      { url: "/logo/svg/renowa-small-logo-dark-rounded-bg.svg", type: "image/svg+xml" },
+      { url: "/logo/compact/renowa-labs-compact-on-dark-background.png", sizes: "509x707", type: "image/png" },
+      { url: "/logo/compact/renowa-labs-compact-on-dark-background.svg", type: "image/svg+xml" },
     ],
-    shortcut: "/logo/png/renowa-small-logo-dark-rounded-bg.png",
-    apple: [{ url: "/logo/png/renowa-small-logo-dark-rounded-bg.png", sizes: "600x600", type: "image/png" }],
+    shortcut: "/logo/compact/renowa-labs-compact-on-dark-background.png",
+    apple: [{ url: "/logo/compact/renowa-labs-compact-on-dark-background.png", sizes: "509x707", type: "image/png" }],
   },
 };
 

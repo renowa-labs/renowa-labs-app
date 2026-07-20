@@ -149,20 +149,20 @@ export function Header() {
 
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <Image
-            src="/logo/png/renowa-logo-transparent-white.png"
+            src="/logo/horizontal/renowa-labs-horizontal-dark-exact.svg"
             alt=""
             aria-hidden="true"
-            width={665}
-            height={294}
+            width={1493}
+            height={246}
             priority
             className="theme-logo-dark absolute left-[-4vw] top-1/2 w-[min(68rem,94vw)] max-w-none -translate-y-1/2 opacity-[0.08] blur-[2px]"
           />
           <Image
-            src="/logo/png/renowa-logo-transparent-black.png"
+            src="/logo/horizontal/renowa-labs-horizontal-light-exact.svg"
             alt=""
             aria-hidden="true"
-            width={665}
-            height={294}
+            width={1493}
+            height={246}
             priority
             className="theme-logo-light absolute left-[-4vw] top-1/2 w-[min(68rem,94vw)] max-w-none -translate-y-1/2 opacity-[0.08] blur-[2px]"
           />

@@ -12,19 +12,19 @@ export function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-[var(--border)] py-14 sm:py-18">
       <Image
-        src="/logo/png/renowa-logo-transparent-white.png"
+        src="/logo/horizontal/renowa-labs-horizontal-dark-exact.svg"
         alt=""
         aria-hidden="true"
-        width={665}
-        height={294}
+        width={1493}
+        height={246}
         className="theme-logo-dark pointer-events-none absolute bottom-[-3.5rem] left-1/2 z-0 w-[min(58rem,118vw)] max-w-none -translate-x-1/2 opacity-[0.07] sm:bottom-[-5rem] lg:w-[68rem]"
       />
       <Image
-        src="/logo/png/renowa-logo-transparent-black.png"
+        src="/logo/horizontal/renowa-labs-horizontal-light-exact.svg"
         alt=""
         aria-hidden="true"
-        width={665}
-        height={294}
+        width={1493}
+        height={246}
         className="theme-logo-light pointer-events-none absolute bottom-[-3.5rem] left-1/2 z-0 w-[min(58rem,118vw)] max-w-none -translate-x-1/2 opacity-[0.06] sm:bottom-[-5rem] lg:w-[68rem]"
       />
       <Container className="relative z-10 grid gap-14">
@@ -32,14 +32,14 @@ export function Footer() {
           <div className="space-y-5" aria-label="Renowa Labs">
             <div className="relative h-[57px] w-32 sm:h-16 sm:w-36" aria-hidden="true">
               <Image
-                src="/logo/png/renowa-logo-transparent-white.png"
+                src="/logo/horizontal/renowa-labs-horizontal-dark-exact.svg"
                 alt=""
                 fill
                 sizes="144px"
                 className="theme-logo-dark object-contain object-left"
               />
               <Image
-                src="/logo/png/renowa-logo-transparent-black.png"
+                src="/logo/horizontal/renowa-labs-horizontal-light-exact.svg"
                 alt=""
                 fill
                 sizes="144px"

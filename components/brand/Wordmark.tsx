@@ -22,18 +22,18 @@ export function Wordmark({
       onClick={onClick}
     >
       <Image
-        src="/logo/png/renowa-logo-transparent-white.png"
+        src="/logo/horizontal/renowa-labs-horizontal-dark-exact.svg"
         alt=""
-        width={665}
-        height={294}
+        width={1493}
+        height={246}
         priority
         className="theme-logo-dark h-auto w-28 sm:w-32"
       />
       <Image
-        src="/logo/png/renowa-logo-transparent-black.png"
+        src="/logo/horizontal/renowa-labs-horizontal-light-exact.svg"
         alt=""
-        width={665}
-        height={294}
+        width={1493}
+        height={246}
         priority
         className="theme-logo-light h-auto w-28 sm:w-32"
       />
