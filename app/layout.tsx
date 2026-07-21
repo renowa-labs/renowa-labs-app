@@ -61,29 +61,6 @@ export const metadata: Metadata = {
     images: ["/og/renowa-og.svg"],
   },
   category: "technology",
-  icons: {
-    icon: [
-      {
-        url: "/favicon.ico",
-        sizes: "48x48",
-        type: "image/x-icon",
-      },
-      {
-        url: "/logo/compact/renowa-labs-favicon-light.png",
-        sizes: "512x512",
-        type: "image/png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/logo/compact/renowa-labs-favicon-dark.png",
-        sizes: "512x512",
-        type: "image/png",
-        media: "(prefers-color-scheme: dark)",
-      },
-    ],
-    shortcut: "/favicon.ico",
-    apple: [{ url: "/logo/compact/renowa-labs-favicon-light.png", sizes: "512x512", type: "image/png" }],
-  },
 };
 
 const structuredData = {
