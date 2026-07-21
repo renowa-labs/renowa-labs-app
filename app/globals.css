@@ -237,56 +237,122 @@ textarea {
 }
 
 [data-sonner-toaster].renowa-toaster {
-  --border-radius: 4px;
-  font-family: var(--font-geist-mono), "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --border-radius: 8px;
+  --width: 390px;
+  font-family: var(--font-geist-sans), Arial, sans-serif;
 }
 
 [data-sonner-toaster].renowa-toaster [data-sonner-toast][data-styled="true"] {
+  position: relative;
+  gap: 12px;
+  overflow: visible;
+  padding: 15px 16px;
   border-color: var(--border);
-  background: var(--surface-elevated);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+  background: color-mix(in srgb, var(--surface-elevated) 94%, transparent);
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.22),
+    0 2px 8px rgba(0, 0, 0, 0.1);
   color: var(--foreground);
+  backdrop-filter: blur(18px) saturate(135%);
 }
 
-[data-sonner-toaster].renowa-toaster [data-sonner-toast][data-type="success"] {
-  border-left: 3px solid var(--foreground);
+[data-sonner-toaster].renowa-toaster [data-sonner-toast][data-styled="true"]::before {
+  position: absolute;
+  inset: 7px auto 7px 0;
+  width: 3px;
+  border-radius: 0 999px 999px 0;
+  background: var(--muted-foreground);
+  content: "";
 }
 
-[data-sonner-toaster].renowa-toaster [data-sonner-toast][data-type="error"] {
-  border-left: 3px solid #e27d75;
+[data-sonner-toaster].renowa-toaster [data-sonner-toast][data-type="success"]::before {
+  background: #65a878;
+}
+
+[data-sonner-toaster].renowa-toaster [data-sonner-toast][data-type="error"]::before {
+  background: #df7169;
+}
+
+[data-sonner-toaster].renowa-toaster .renowa-toast-content {
+  gap: 3px;
+  padding-right: 4px;
+}
+
+[data-sonner-toaster].renowa-toaster .renowa-toast-icon {
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+}
+
+[data-sonner-toaster].renowa-toaster [data-type="success"] .renowa-toast-icon {
+  border-color: color-mix(in srgb, #65a878 55%, var(--border));
+  color: #65a878;
+}
+
+[data-sonner-toaster].renowa-toaster [data-type="error"] .renowa-toast-icon {
+  border-color: color-mix(in srgb, #df7169 55%, var(--border));
+  color: #df7169;
 }
 
 [data-sonner-toaster].renowa-toaster [data-description].renowa-toast-description,
 [data-sonner-toaster].renowa-toaster [data-description] {
   color: var(--muted-foreground);
+  font-size: 12px;
+  line-height: 1.55;
 }
 
 [data-sonner-toaster].renowa-toaster .renowa-toast-title {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
 }
 
 [data-sonner-toaster].renowa-toaster .renowa-toast-action {
-  height: 28px;
-  border: 1px solid var(--border);
+  min-width: max-content;
+  height: 30px;
+  padding-inline: 12px;
+  border: 1px solid var(--foreground);
   border-radius: 999px;
-  background: transparent;
-  color: var(--foreground);
-  font-family: inherit;
+  background: var(--foreground);
+  color: var(--background);
+  font-family: var(--font-geist-mono), "SFMono-Regular", Consolas, monospace;
   font-size: 10px;
-  letter-spacing: 0.14em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+  transition: opacity 160ms ease, transform 160ms ease;
 }
 
 [data-sonner-toaster].renowa-toaster .renowa-toast-action:hover {
-  border-color: var(--foreground);
-  background: var(--accent-soft);
+  background: var(--foreground);
+  opacity: 0.78;
+  transform: translateY(-1px);
 }
 
 [data-sonner-toaster].renowa-toaster .renowa-toast-close {
+  top: -7px;
+  right: -7px;
+  left: auto;
+  width: 22px;
+  height: 22px;
+  border-color: var(--border);
+  background: var(--surface-elevated);
   color: var(--foreground);
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+[data-sonner-toaster].renowa-toaster .renowa-toast-close:hover {
+  border-color: var(--foreground);
+  background: var(--surface);
+}
+
+@media (max-width: 640px) {
+  [data-sonner-toaster].renowa-toaster {
+    --width: calc(100vw - 32px);
+  }
 }
 
 :root[data-theme="light"] .theme-logo-dark {

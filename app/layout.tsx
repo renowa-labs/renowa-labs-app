@@ -64,6 +64,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
+        url: "/favicon.ico",
+        sizes: "48x48",
+        type: "image/x-icon",
+      },
+      {
         url: "/logo/compact/renowa-labs-favicon-light.png",
         sizes: "512x512",
         type: "image/png",
@@ -76,7 +81,7 @@ export const metadata: Metadata = {
         media: "(prefers-color-scheme: dark)",
       },
     ],
-    shortcut: "/logo/compact/renowa-labs-favicon-dark.png",
+    shortcut: "/favicon.ico",
     apple: [{ url: "/logo/compact/renowa-labs-favicon-light.png", sizes: "512x512", type: "image/png" }],
   },
 };

@@ -25,12 +25,19 @@ export function ToastProvider() {
       className="renowa-toaster"
       closeButton
       duration={6000}
-      gap={10}
-      position="bottom-right"
+      expand
+      gap={12}
+      mobileOffset={{ top: 72, right: 16, left: 16 }}
+      offset={{ top: 76, right: 24 }}
+      position="top-right"
+      swipeDirections={["right"]}
       theme={theme}
+      visibleToasts={3}
       toastOptions={{
         classNames: {
           toast: "renowa-toast",
+          content: "renowa-toast-content",
+          icon: "renowa-toast-icon",
           title: "renowa-toast-title",
           description: "renowa-toast-description",
           closeButton: "renowa-toast-close",
