@@ -3,20 +3,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Footer } from "@/components/site/Footer";
 import { AppStoreIcon } from "@/components/ui/AppStoreIcon";
 import { ButtonLink, buttonClassName } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import type { Product } from "@/data/products";
-import { getProduct, getRelatedProducts, products } from "@/data/products";
+import { SITE_NAME, SITE_URL } from "@/data/site";
+import { getIndexableProducts, getProduct, getRelatedProducts } from "@/data/products";
+import { getPublishedArticles } from "@/lib/engineering/content";
 import { cn } from "@/lib/cn";
+import { absoluteUrl, createPageMetadata } from "@/lib/seo";
 
 type ProductPageProps = {
   params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams() {
-  return products.map((product) => ({
+  return getIndexableProducts().map((product) => ({
     slug: product.slug,
   }));
 }
@@ -29,34 +33,18 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
     notFound();
   }
 
-  return {
-    title: product.name,
-    description: product.shortDescription,
-    alternates: {
-      canonical: `/products/${product.slug}`,
-    },
-    openGraph: {
-      title: `${product.name} by Renowa Labs`,
-      description: product.shortDescription,
-      url: `/products/${product.slug}`,
-      images: [
-        {
-          url: product.screenshotPlaceholder,
-          width: product.iconImage ? 1024 : 720,
-          height: product.iconImage ? 1024 : 520,
-          alt: product.iconImage
-            ? `${product.name} ${product.platform === "Web" ? "logo" : "app icon"}`
-            : `${product.name} product visual`,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${product.name} by Renowa Labs`,
-      description: product.shortDescription,
-      images: [product.screenshotPlaceholder],
-    },
-  };
+  const image = product.images[0];
+
+  return createPageMetadata({
+    title: product.seoTitle,
+    description: product.seoDescription,
+    path: `/products/${product.slug}`,
+    image: image?.src,
+    imageAlt: image?.alt,
+    imageWidth: image?.width,
+    imageHeight: image?.height,
+    indexable: product.indexable,
+  });
 }
 
 export default async function ProductDetailPage({ params }: ProductPageProps) {
@@ -68,12 +56,40 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
   }
 
   const relatedProducts = getRelatedProducts(product.slug);
-  const launchUrl = product.launchUrl ?? product.appStoreUrl;
   const launchLabel = product.launchLabel ?? "Open App Store";
   const launchStyle = { "--product-accent": product.accent } as CSSProperties;
-  const detailLabels = product.tags
-    ? [product.status, ...product.tags]
-    : [product.platform, product.status, product.category];
+  const detailLabels = product.cardTags
+    ? [product.status, ...product.cardTags]
+    : [...product.platforms, product.status, product.category];
+  const relatedArticles = getPublishedArticles().filter((article) => product.relatedArticles.includes(article.slug));
+  const productUrl = `${SITE_URL}/products/${product.slug}`;
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: product.name,
+    description: product.fullDescription,
+    url: productUrl,
+    sameAs: product.domain,
+    image: absoluteUrl(product.images[0]?.src ?? product.logo),
+    applicationCategory: product.category,
+    ...(product.slug === "save-more-dreams" ? { operatingSystem: "iOS" } : {}),
+    creator: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    dateModified: product.updatedAt,
+    featureList: product.features,
+  };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Products", item: `${SITE_URL}/products` },
+      { "@type": "ListItem", position: 3, name: product.name, item: productUrl },
+    ],
+  };
 
   return (
     <>
@@ -110,11 +126,11 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                 {product.shortDescription}
               </p>
               <p className="mt-8 max-w-2xl whitespace-pre-line text-sm leading-7 text-[color:var(--muted-foreground)]">
-                {product.longDescription}
+                {product.fullDescription}
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <a
-                  href={launchUrl}
+                  href={product.externalUrl}
                   style={launchStyle}
                   className={buttonClassName({ variant: "primary", className: "product-launch-button w-full sm:w-auto" })}
                 >
@@ -127,12 +143,12 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               </div>
             </div>
 
-            {product.iconImage ? (
+            {product.logo ? (
               <div className="grid min-h-[24rem] place-items-center rounded-[6px] border border-[var(--border)] bg-[rgba(255,255,255,0.018)] p-8">
                 <div className="grid gap-5 text-center">
                   <Image
-                    src={product.iconImage}
-                    alt={`${product.name} ${product.platform === "Web" ? "logo" : "app icon"}`}
+                    src={product.logo}
+                    alt={`${product.name} logo`}
                     width={168}
                     height={168}
                     priority
@@ -140,7 +156,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                   />
                   <div>
                     <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[color:var(--muted-foreground)]">
-                      {product.launchIcon === "none" ? product.platform : "App Store"}
+                      {product.launchIcon === "none" ? product.platforms.join(" / ") : "App Store"}
                     </p>
                     <p className="mt-2 text-sm font-semibold uppercase tracking-[0.16em] text-[color:var(--foreground)]">
                       {product.name}
@@ -151,10 +167,10 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             ) : (
               <div className="rounded-[6px] border border-[var(--border)] bg-[rgba(255,255,255,0.018)] p-3">
                 <Image
-                  src={product.screenshotPlaceholder}
-                  alt={`${product.name} interface placeholder`}
-                  width={720}
-                  height={520}
+                  src={product.images[0].src}
+                  alt={product.images[0].alt}
+                  width={product.images[0].width}
+                  height={product.images[0].height}
                   className="aspect-[720/520] w-full rounded-[6px] object-cover"
                 />
               </div>
@@ -181,6 +197,40 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               ))}
             </ul>
           </section>
+
+          <section className="mt-16 grid gap-4 md:grid-cols-3" aria-label={`${product.name} product context`}>
+            {[
+              ["Problem", product.problem],
+              ["Solution", product.solution],
+              ["Audience", product.audience.join("; ")],
+            ].map(([label, value]) => (
+              <div key={label} className="rounded-[6px] border border-[var(--border)] bg-[rgba(255,255,255,0.018)] p-5">
+                <h2 className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[color:var(--muted-foreground)]">{label}</h2>
+                <p className="mt-4 text-xs leading-6 text-[color:var(--foreground)]">{value}</p>
+              </div>
+            ))}
+          </section>
+
+          {relatedArticles.length ? (
+            <section className="mt-16 border-t border-[var(--border)] pt-10" aria-labelledby="product-engineering-heading">
+              <p className="text-[10px] uppercase tracking-[0.3em] text-[color:var(--muted-foreground)]">Engineering</p>
+              <h2 id="product-engineering-heading" className="mt-3 text-2xl font-semibold text-[color:var(--foreground)]">
+                How {product.name} is being built
+              </h2>
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                {relatedArticles.map((article) => (
+                  <Link
+                    key={article.slug}
+                    href={`/engineering/${article.slug}`}
+                    className="rounded-[6px] border border-[var(--border)] p-5 transition hover:border-[rgba(255,255,255,0.28)]"
+                  >
+                    <h3 className="text-sm font-semibold leading-6 text-[color:var(--foreground)]">{article.title}</h3>
+                    <p className="mt-2 text-xs leading-6 text-[color:var(--muted-foreground)]">{article.description}</p>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
 
           {relatedProducts.length ? (
             <section className="mt-16 border-t border-[var(--border)] pt-10">
@@ -212,6 +262,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
         </Container>
       </main>
       <Footer />
+      <JsonLd data={[productJsonLd, breadcrumbJsonLd]} />
     </>
   );
 }

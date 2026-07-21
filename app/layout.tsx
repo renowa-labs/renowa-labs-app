@@ -3,7 +3,15 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/site/Header";
 import { PageTransition } from "@/components/site/PageTransition";
-import { CONTACT_EMAIL, SITE_DESCRIPTION, SITE_NAME, SITE_POSITIONING, SITE_URL } from "@/data/site";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  COMPANY_KNOWS_ABOUT,
+  CONTACT_EMAIL,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_POSITIONING,
+  SITE_URL,
+} from "@/data/site";
 
 const geistSans = localFont({
   variable: "--font-geist-sans",
@@ -21,7 +29,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: SITE_NAME,
   title: {
-    default: "Renowa Labs - AI-first products ",
+    default: "Renowa Labs — AI-Powered Software Products",
     template: "%s | Renowa Labs",
   },
   description: SITE_DESCRIPTION,
@@ -30,25 +38,27 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
+    locale: "en_AZ",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: "Renowa Labs - AI-first products ",
+    title: "Renowa Labs — AI-Powered Software Products",
     description: SITE_DESCRIPTION,
     images: [
       {
         url: "/og/renowa-og.svg",
         width: 1200,
         height: 630,
-        alt: "Renowa Labs - AI-first products ",
+        alt: "Renowa Labs — AI-powered software products built in Azerbaijan",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Renowa Labs - AI-first products ",
+    title: "Renowa Labs — AI-Powered Software Products",
     description: SITE_DESCRIPTION,
     images: ["/og/renowa-og.svg"],
   },
+  category: "technology",
   icons: {
     icon: [
       { url: "/logo/compact/renowa-labs-compact-on-dark-background.png", sizes: "509x707", type: "image/png" },
@@ -64,13 +74,15 @@ const structuredData = {
   "@type": "Organization",
   name: SITE_NAME,
   url: SITE_URL,
+  logo: `${SITE_URL}/logo/png/renowa-logo-light-bg.png`,
   email: CONTACT_EMAIL,
   description: SITE_DESCRIPTION,
   slogan: SITE_POSITIONING,
-  address: {
-    "@type": "PostalAddress",
-    addressCountry: "AZ",
+  foundingLocation: {
+    "@type": "Place",
+    name: "Azerbaijan",
   },
+  knowsAbout: COMPANY_KNOWS_ABOUT,
 };
 
 const themeScript = `
@@ -98,16 +110,14 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="alternate" type="application/rss+xml" title="Renowa Labs Engineering" href="/rss.xml" />
+      </head>
       <body className="min-h-full">
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <Header />
         <PageTransition>{children}</PageTransition>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
-          }}
-        />
+        <JsonLd data={structuredData} />
       </body>
     </html>
   );

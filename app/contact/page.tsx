@@ -1,22 +1,15 @@
-import type { Metadata } from "next";
+import { ContactForm } from "@/components/contact/ContactForm";
 import { Footer } from "@/components/site/Footer";
 import { ButtonLink, buttonClassName } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { SectionHeader } from "@/components/ui/SectionHeader";
 import { CONTACT_EMAIL } from "@/data/site";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Contact",
-  description: "Contact Renowa Labs for ideas, partnerships, and product collaborations.",
-  alternates: {
-    canonical: "/contact",
-  },
-  openGraph: {
-    title: "Contact Renowa Labs",
-    description: "Have an idea, partnership, or product collaboration? Contact Renowa Labs.",
-    url: "/contact",
-  },
-};
+  description: "Contact Renowa Labs about product partnerships, applied AI, mobile applications, and software collaboration.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
@@ -25,15 +18,17 @@ export default function ContactPage() {
         <Container className="pb-20">
           <section className="grid gap-10 lg:grid-cols-[0.95fr_1fr] lg:items-start">
             <div>
-              <SectionHeader
-                eyebrow="Contact"
-                title="Let's build something intelligent."
-                description="Have an idea, partnership, or product collaboration? Contact Renowa Labs."
-              />
+              <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-[color:var(--muted-foreground)]">Contact</p>
+              <h1 className="mt-5 text-balance text-4xl font-semibold leading-[1.05] text-[color:var(--foreground)] sm:text-6xl">
+                Let&apos;s build something intelligent.
+              </h1>
+              <p className="mt-6 max-w-xl text-pretty text-sm leading-7 text-[color:var(--muted-foreground)]">
+                Have a product idea, partnership, or applied software problem? Tell us what you are working on and we will respond from Renowa Labs.
+              </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <a href={`mailto:${CONTACT_EMAIL}`} className={buttonClassName({ className: "w-full sm:w-auto" })}>
+                {/* <a href={`mailto:${CONTACT_EMAIL}`} className={buttonClassName({ className: "w-full sm:w-auto" })}>
                   Email the lab
-                </a>
+                </a> */}
                 <ButtonLink href="/products" variant="secondary" className="w-full sm:w-auto">
                   Explore products
                 </ButtonLink>
@@ -41,44 +36,7 @@ export default function ContactPage() {
               <p className="mt-5 text-sm text-[color:var(--muted-foreground)]">{CONTACT_EMAIL}</p>
             </div>
 
-            <form className="rounded-[6px] border border-[var(--border)] bg-[rgba(255,255,255,0.018)] p-5 sm:p-6">
-              <div className="grid gap-4">
-                <label className="grid gap-2 text-sm font-medium text-[color:var(--foreground)]">
-                  Name
-                  <input
-                    type="text"
-                    name="name"
-                    className="min-h-12 rounded-[4px] border border-[var(--border)] bg-[rgba(0,0,0,0.12)] px-4 text-[color:var(--foreground)] outline-none transition placeholder:text-[rgba(140,140,135,0.7)] focus:border-[rgba(255,255,255,0.38)]"
-                    placeholder="Your name"
-                  />
-                </label>
-                <label className="grid gap-2 text-sm font-medium text-[color:var(--foreground)]">
-                  Email
-                  <input
-                    type="email"
-                    name="email"
-                    className="min-h-12 rounded-[4px] border border-[var(--border)] bg-[rgba(0,0,0,0.12)] px-4 text-[color:var(--foreground)] outline-none transition placeholder:text-[rgba(140,140,135,0.7)] focus:border-[rgba(255,255,255,0.38)]"
-                    placeholder="you@example.com"
-                  />
-                </label>
-                <label className="grid gap-2 text-sm font-medium text-[color:var(--foreground)]">
-                  Message
-                  <textarea
-                    name="message"
-                    rows={6}
-                    className="resize-none rounded-[4px] border border-[var(--border)] bg-[rgba(0,0,0,0.12)] px-4 py-3 text-[color:var(--foreground)] outline-none transition placeholder:text-[rgba(140,140,135,0.7)] focus:border-[rgba(255,255,255,0.38)]"
-                    placeholder="Tell us what you are thinking about."
-                  />
-                </label>
-                <button
-                  type="button"
-                  className={buttonClassName({ variant: "secondary", className: "mt-2 w-full" })}
-                  aria-label="Visual contact form placeholder"
-                >
-                  Form UI placeholder
-                </button>
-              </div>
-            </form>
+            <ContactForm />
           </section>
         </Container>
       </main>

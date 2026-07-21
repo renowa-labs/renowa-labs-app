@@ -6,7 +6,6 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { products } from "@/data/products";
 import { AnimatedSignalField } from "@/components/brand/AnimatedSignalField";
-import { HackerNewsTicker } from "@/components/home/HackerNewsTicker";
 import { RenowaGlyphMark } from "@/components/brand/RenowaGlyphMark";
 
 export function HomePortal() {
@@ -37,7 +36,7 @@ export function HomePortal() {
   return (
     <main
       ref={scope}
-      className="relative flex h-svh overflow-hidden px-5 pb-24 pt-24 sm:px-8 lg:px-10"
+      className="relative flex min-h-svh overflow-hidden px-5 pb-20 pt-24 sm:px-8 lg:px-10"
     >
       <AnimatedSignalField />
       <div className="relative z-10 mx-auto flex min-h-0 w-full max-w-5xl flex-1 flex-col justify-center">
@@ -46,14 +45,14 @@ export function HomePortal() {
             [ AI / MOBILE PRODUCTS / APPLIED SOFTWARE ]
           </p>
           <RenowaGlyphMark className="home-reveal" />
-          {/* <h1 className="home-reveal mt-9 text-balance text-xl font-semibold leading-snug text-[color:var(--foreground)] sm:text-2xl">
-            AI-first products, built  for the world.
+          <h1 className="home-reveal mt-7 max-w-3xl text-balance text-base font-semibold leading-7 text-[color:var(--foreground)] sm:text-lg">
+            Renowa Labs is an Azerbaijan-based technology lab building AI-powered software products for local and international markets.
           </h1>
-          <p className="home-reveal mt-5 max-w-2xl text-pretty text-xs leading-6 text-[color:var(--muted-foreground)] sm:text-sm">
-            Renowa Labs is a small technology lab creating intelligent software for local and global markets.
-          </p> */}
+          <p className="home-reveal mt-3 max-w-3xl text-pretty text-xs leading-6 text-[color:var(--muted-foreground)]">
+            We work across artificial intelligence, mobile applications, recruitment technology, data platforms, and applied software.
+          </p>
 
-          <div className="home-reveal mt-10 flex flex-wrap justify-center gap-x-7 gap-y-3">
+          <div className="home-reveal mt-7 flex flex-wrap justify-center gap-x-7 gap-y-3">
             {products.map((product, index) => (
               <Link
                 key={product.slug}
@@ -79,7 +78,7 @@ export function HomePortal() {
               href="/about"
               className="transition hover:text-[color:var(--foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
             >
-              Team
+              About
             </Link>
             <Link
               href="/contact"
@@ -90,7 +89,6 @@ export function HomePortal() {
           </div>
         </section>
       </div>
-      {/* <HackerNewsTicker /> */}
     </main>
   );
 }

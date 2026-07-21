@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CONTACT_EMAIL, SITE_POSITIONING } from "@/data/site";
+import { getIndexableProducts } from "@/data/products";
 import { Container } from "@/components/ui/Container";
 
 const footerLinkClass =
@@ -8,6 +9,7 @@ const footerLinkClass =
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const products = getIndexableProducts();
 
   return (
     <footer className="relative overflow-hidden border-t border-[var(--border)] py-14 sm:py-18">
@@ -49,11 +51,14 @@ export function Footer() {
             <p className="max-w-md text-sm leading-6 text-[color:var(--muted-foreground)]">{SITE_POSITIONING}</p>
           </div>
 
-          <nav className="grid grid-cols-2 gap-8 text-[12px] uppercase tracking-[0.16em] text-[color:var(--muted-foreground)] sm:grid-cols-3">
+          <nav className="grid grid-cols-2 gap-8 text-[12px] uppercase tracking-[0.16em] text-[color:var(--muted-foreground)]">
             <div className="grid gap-3">
               <p className="text-[color:var(--foreground)]">Explore</p>
               <Link href="/products" className={footerLinkClass}>
                 Products
+              </Link>
+              <Link href="/engineering" className={footerLinkClass}>
+                Engineering
               </Link>
               <Link href="/about" className={footerLinkClass}>
                 About
@@ -64,27 +69,11 @@ export function Footer() {
             </div>
             <div className="grid gap-3">
               <p className="text-[color:var(--foreground)]">Products</p>
-              <Link href="/products/save-more-dreams" className={footerLinkClass}>
-                Save More Dreams
-              </Link>
-              <Link href="/products/justforhack" className={footerLinkClass}>
-                JustForHack
-              </Link>
-              <Link href="/products/hirinq" className={footerLinkClass}>
-                Hirinq
-              </Link>
-              <Link href="/products/task-frame" className={footerLinkClass}>
-                Task Frame
-              </Link>
-            </div>
-            <div className="grid gap-3">
-              <p className="text-[color:var(--foreground)]">Social</p>
-              <Link href="#" className={footerLinkClass}>
-                LinkedIn
-              </Link>
-              <Link href="#" className={footerLinkClass}>
-                X
-              </Link>
+              {products.map((product) => (
+                <Link key={product.slug} href={`/products/${product.slug}`} className={footerLinkClass}>
+                  {product.name}
+                </Link>
+              ))}
             </div>
           </nav>
         </div>
@@ -99,7 +88,7 @@ export function Footer() {
           <div className="flex flex-wrap gap-x-5 gap-y-2 sm:justify-end">
             <p>{year} Renowa Labs. All rights reserved.</p>
             <Link
-              href="#"
+              href="/privacy"
               className="underline underline-offset-4 transition hover:text-[color:var(--foreground)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
             >
               Privacy Policy

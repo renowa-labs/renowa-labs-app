@@ -1,23 +1,34 @@
 import type { MetadataRoute } from "next";
-import { products } from "@/data/products";
-import { SITE_URL } from "@/data/site";
+import { getIndexableProducts } from "@/data/products";
+import { SITE_UPDATED_AT, SITE_URL } from "@/data/site";
+import { getPublishedArticles } from "@/lib/engineering/content";
+import { absoluteUrl } from "@/lib/seo";
 
-const lastModified = new Date("2026-07-04");
+const lastModified = new Date(SITE_UPDATED_AT);
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["", "/products", "/about", "/contact"].map((route) => ({
+  const routes = ["", "/products", "/engineering", "/about", "/contact", "/privacy"].map((route) => ({
     url: `${SITE_URL}${route}`,
     lastModified,
     changeFrequency: "monthly" as const,
-    priority: route === "" ? 1 : 0.8,
+    priority: route === "" ? 1 : route === "/privacy" ? 0.3 : 0.8,
   }));
 
-  const productRoutes = products.map((product) => ({
+  const productRoutes = getIndexableProducts().map((product) => ({
     url: `${SITE_URL}/products/${product.slug}`,
-    lastModified,
+    lastModified: new Date(product.updatedAt),
     changeFrequency: "monthly" as const,
     priority: 0.7,
+    images: product.images.map((image) => absoluteUrl(image.src)),
   }));
 
-  return [...routes, ...productRoutes];
+  const articleRoutes = getPublishedArticles().map((article) => ({
+    url: `${SITE_URL}/engineering/${article.slug}`,
+    lastModified: new Date(article.updatedAt),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+    images: [absoluteUrl(article.coverImage)],
+  }));
+
+  return [...routes, ...productRoutes, ...articleRoutes];
 }

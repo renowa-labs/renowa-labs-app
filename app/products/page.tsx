@@ -3,22 +3,19 @@ import { Footer } from "@/components/site/Footer";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ProductGrid } from "@/components/products/ProductGrid";
-import { products } from "@/data/products";
+import { getIndexableProducts } from "@/data/products";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Products",
-  description: "Products from Renowa Labs, a small AI-first software lab .",
-  alternates: {
-    canonical: "/products",
-  },
-  openGraph: {
-    title: "Products from Renowa Labs",
-    description: "Focused software products from a small AI-first lab.",
-    url: "/products",
-  },
-};
+  description:
+    "Explore real AI-powered software products from Renowa Labs across personal finance, cybersecurity, and recruitment technology.",
+  path: "/products",
+});
 
 export default function ProductsPage() {
+  const products = getIndexableProducts();
+
   return (
     <>
       <main className="page-shell">

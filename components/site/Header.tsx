@@ -9,16 +9,11 @@ import gsap from "gsap";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { ThemeToggle } from "@/components/site/ThemeToggle";
 import { CONTACT_EMAIL, NAV_ITEMS, SITE_POSITIONING } from "@/data/site";
-import { products } from "@/data/products";
+import { getIndexableProducts } from "@/data/products";
 import { cn } from "@/lib/cn";
 
 const menuItems = [{ href: "/", label: "Home" }, ...NAV_ITEMS] as const;
-
-const socialItems = [
-  { href: "#", label: "LinkedIn" },
-  { href: "#", label: "Instagram" },
-  { href: "#", label: "X" },
-] as const;
+const products = getIndexableProducts();
 
 export function Header() {
   const pathname = usePathname();
@@ -248,8 +243,8 @@ export function Header() {
               </section>
             </div>
 
-            <div className="grid border-t border-[var(--border)] sm:grid-cols-2">
-              <section className="renowa-menu-reveal border-b border-[var(--border)] px-5 py-7 sm:border-b-0 sm:border-r sm:px-8">
+            <div className="border-t border-[var(--border)]">
+              <section className="renowa-menu-reveal px-5 py-7 sm:px-8">
                 <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[color:var(--muted-foreground)]">
                   Let&apos;s talk
                 </p>
@@ -260,25 +255,6 @@ export function Header() {
                 >
                   {CONTACT_EMAIL}
                 </a>
-              </section>
-
-              <section className="renowa-menu-reveal px-5 py-7 sm:px-8">
-                <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-[color:var(--muted-foreground)]">
-                  Socials
-                </p>
-                <div className="flex flex-wrap gap-4 text-[12px] uppercase tracking-[0.16em] text-[color:var(--muted-foreground)]">
-                  {socialItems.map((item) => (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      tabIndex={open ? undefined : -1}
-                      onClick={() => setOpen(false)}
-                      className="rounded-sm transition hover:text-[color:var(--foreground)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
               </section>
             </div>
           </div>

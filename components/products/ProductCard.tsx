@@ -11,10 +11,9 @@ import { buttonClassName } from "@/components/ui/Button";
 
 export function ProductCard({ product }: { product: Product }) {
   const scope = useRef<HTMLElement>(null);
-  const launchUrl = product.launchUrl ?? product.appStoreUrl;
   const launchLabel = product.launchLabel ?? "App Store";
   const launchStyle = { "--product-accent": product.accent } as CSSProperties;
-  const categoryLabels = product.tags ?? [product.category];
+  const categoryLabels = product.cardTags ?? [product.category];
 
   useGSAP(
     () => {
@@ -44,10 +43,10 @@ export function ProductCard({ product }: { product: Product }) {
     >
       <div className="flex items-start justify-between gap-4">
         <div className="grid size-12 shrink-0 place-items-center rounded-[4px] border border-[var(--border)] bg-[rgba(255,255,255,0.035)] text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--foreground)]">
-          {product.iconImage ? (
+          {product.logo ? (
             <Image
-              src={product.iconImage}
-              alt={`${product.name} ${product.platform === "Web" ? "logo" : "app icon"}`}
+              src={product.logo}
+              alt={`${product.name} logo`}
               width={48}
               height={48}
               className="size-full rounded-[4px] object-cover"
@@ -82,7 +81,7 @@ export function ProductCard({ product }: { product: Product }) {
       </div>
       <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
         <a
-          href={launchUrl}
+          href={product.externalUrl}
           style={launchStyle}
           className={buttonClassName({ variant: "secondary", className: "product-launch-button w-full sm:w-auto" })}
           aria-label={`Open ${product.name} ${launchLabel}`}
