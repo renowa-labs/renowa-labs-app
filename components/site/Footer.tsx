@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CONTACT_EMAIL, SITE_POSITIONING } from "@/data/site";
+import { CONTACT_EMAIL, LINKEDIN_URL, SITE_POSITIONING } from "@/data/site";
 import { getIndexableProducts } from "@/data/products";
 import { Container } from "@/components/ui/Container";
 
@@ -51,7 +51,7 @@ export function Footer() {
             <p className="max-w-md text-sm leading-6 text-[color:var(--muted-foreground)]">{SITE_POSITIONING}</p>
           </div>
 
-          <nav className="grid grid-cols-2 gap-8 text-[12px] uppercase tracking-[0.16em] text-[color:var(--muted-foreground)]">
+          <nav className="grid grid-cols-2 gap-8 text-[12px] uppercase tracking-[0.16em] text-[color:var(--muted-foreground)] sm:grid-cols-3">
             <div className="grid gap-3">
               <p className="text-[color:var(--foreground)]">Explore</p>
               <Link href="/products" className={footerLinkClass}>
@@ -74,6 +74,12 @@ export function Footer() {
                   {product.name}
                 </Link>
               ))}
+            </div>
+            <div className="grid gap-3">
+              <p className="text-[color:var(--foreground)]">Connect</p>
+              <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" className={footerLinkClass}>
+                LinkedIn
+              </a>
             </div>
           </nav>
         </div>

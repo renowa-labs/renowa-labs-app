@@ -46,7 +46,7 @@ export function HomePortal() {
           </p>
           <RenowaGlyphMark className="home-reveal" />
           <h1 className="home-reveal mt-7 max-w-3xl text-balance text-base font-semibold leading-7 text-[color:var(--foreground)] sm:text-lg">
-            Renowa Labs is an Azerbaijan-based technology lab building AI-powered software products for local and international markets.
+            Renowa Labs builds AI-powered software products for people and teams everywhere.
           </h1>
           <p className="home-reveal mt-3 max-w-3xl text-pretty text-xs leading-6 text-[color:var(--muted-foreground)]">
             We work across artificial intelligence, mobile applications, recruitment technology, data platforms, and applied software.
@@ -60,7 +60,7 @@ export function HomePortal() {
                 className="group inline-flex items-baseline gap-2 rounded-sm px-1 py-1 text-[12px] uppercase tracking-[0.22em] text-[color:var(--foreground)] transition duration-300 hover:-translate-y-0.5 hover:text-[color:var(--foreground)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
               >
                 <span className="text-[color:var(--muted-foreground)]">[{String(index + 1).padStart(2, "0")}]</span>
-                <span>{product.name}</span>
+                <span className="text-[13px] font-bold tracking-[0.18em]">{product.name}</span>
                 <span className="hidden text-[10px] lowercase tracking-[0.08em] text-[color:var(--muted-foreground)] sm:inline">
                   / {product.category}
                 </span>

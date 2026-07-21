@@ -7,7 +7,7 @@ export const metadata: Metadata = createPageMetadata({
   title: "Renowa Labs — AI-Powered Software Products",
   description: SITE_DESCRIPTION,
   path: "/",
-  imageAlt: "Renowa Labs — an Azerbaijan-based AI product lab",
+  imageAlt: "Renowa Labs — AI-powered software products",
 });
 
 export default function Home() {

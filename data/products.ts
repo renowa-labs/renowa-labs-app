@@ -150,7 +150,7 @@ export const products = [
     shortDescription:
       "Hirinq is an AI-powered job discovery product that brings vacancies from multiple sources into one personalized experience, helping candidates discover, save and apply for relevant opportunities more easily.",
     fullDescription:
-      "Hirinq is reimagining how people discover job opportunities. Instead of forcing candidates to search across multiple platforms and navigate repetitive vacancy lists, Hirinq brings relevant opportunities together in one intelligent and personalized product experience. Candidates can explore jobs, save opportunities, track their activity and apply through the most appropriate application method. Hirinq is initially being developed for the Azerbaijani job market.",
+      "Hirinq is reimagining how people discover job opportunities. Instead of forcing candidates to search across multiple platforms and navigate repetitive vacancy lists, Hirinq brings relevant opportunities together in one intelligent and personalized product experience. Candidates can explore jobs, save opportunities, track their activity and apply through the most appropriate application method.",
     status: "Coming Soon",
     category: "Recruitment Technology",
     year: "2026",
@@ -167,7 +167,7 @@ export const products = [
     problem: "Candidates often repeat the same search across fragmented job sources and encounter duplicated vacancy listings.",
     solution:
       "Hirinq brings relevant opportunities into one personalized candidate experience for discovery, saving, activity tracking, and applying.",
-    audience: ["Job candidates in Azerbaijan", "People seeking a faster, more relevant job discovery experience"],
+    audience: ["Job candidates", "People seeking a faster, more relevant job discovery experience"],
     images: [
       {
         src: "/products/hirinq/hirinq-mark.svg",
@@ -179,7 +179,7 @@ export const products = [
     logo: "/products/hirinq/hirinq-mark.svg",
     relatedArticles: [
       "detecting-duplicate-jobs-across-platforms",
-      "mobile-first-job-discovery-azerbaijan",
+      "mobile-first-job-discovery",
     ],
     externalUrl: "https://hirinq.ai",
     publishedAt: null,

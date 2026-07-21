@@ -1,24 +1,23 @@
 ---
-slug: mobile-first-job-discovery-azerbaijan
-title: Building a Mobile-First Job Discovery Product for Azerbaijan
-description: Product principles for making vacancy discovery faster, clearer, and more useful for candidates in the Azerbaijani job market.
+slug: mobile-first-job-discovery
+title: Building a Mobile-First Job Discovery Product
+description: Product principles for making job discovery faster, clearer, and more useful for candidates.
 author: Renowa Labs Engineering
 publishedAt: 2026-07-18
 updatedAt: 2026-07-21
 tags:
   - Recruitment Technology
   - Mobile Product
-  - Azerbaijan
 relatedProduct: hirinq
 coverImage: /og/renowa-og.svg
-canonicalUrl: https://www.renowa-labs.com/engineering/mobile-first-job-discovery-azerbaijan
+canonicalUrl: https://www.renowa-labs.com/engineering/mobile-first-job-discovery
 indexable: true
 status: published
 ---
 
 A mobile-first recruitment product is not a desktop vacancy board compressed into a narrow screen. Candidates use a phone in short, interrupted sessions: during a commute, between other tasks, or after receiving a message about an opening. The interface must help them understand whether an opportunity is relevant, remember it, and choose the right next action without demanding a long browsing session.
 
-Hirinq starts from that candidate behaviour. The product is being developed initially for the Azerbaijani job market, where opportunities are distributed across employer pages, recruitment sites, social channels, and other publishing formats. Bringing those vacancies together is valuable only if the resulting experience is clearer than visiting each source separately.
+Hirinq starts from that candidate behaviour. Opportunities are distributed across employer pages, recruitment sites, social channels, and other publishing formats. Bringing them together is valuable only if the resulting experience is clearer than visiting each source separately.
 
 ## Design for decisions, not scrolling volume
 
@@ -40,7 +39,7 @@ Swipe-based interaction can support that rhythm, but the gesture is not the prod
 
 Multi-source coverage introduces inconsistent titles, location formats, languages, salary notation, and application instructions. A candidate should not have to learn each publisher's conventions. Hirinq can normalize common fields so filters and comparisons behave consistently, while preserving the original wording when it carries meaning.
 
-Language deserves particular care. Azerbaijani, English, and Russian can all appear in local recruitment. Search and matching should handle that reality without rewriting every vacancy into generic text. The interface can present structured facts consistently while leaving the source description intact and clearly attributed.
+Language deserves particular care. More than one language can appear in recruitment. Search and matching should handle that reality without rewriting every vacancy into generic text. The interface can present structured facts consistently while leaving the source description intact and clearly attributed.
 
 Location is similarly nuanced. "Baku," a specific district, hybrid work, and fully remote work are not interchangeable. The product should make location and workplace arrangement visible early, because they often determine relevance before a candidate reads further.
 
@@ -74,4 +73,4 @@ Mobile-first also means performance-first. Vacancy cards should not wait for lar
 
 Core actions must remain keyboard accessible and screen-reader friendly. Tap targets need adequate size. Error states should preserve entered data. Authentication, if required, should not interrupt basic exploration earlier than necessary. These are not finishing details; they determine whether the product works for the full range of candidates it intends to serve.
 
-Hirinq's broader goal is a recruitment experience that can scale beyond one market without becoming generic. Starting with Azerbaijan creates a concrete standard: respect the market's languages and sources, simplify fragmented discovery, and design around the real moments when candidates use a phone. International expansion can then adapt the same product principles to new publishing systems, application norms, and candidate expectations.
+Hirinq's goal is a recruitment experience that can work across markets without becoming generic. It should respect different languages and sources, simplify fragmented discovery, and fit the real moments when candidates use a phone. The same product principles can adapt to new publishing systems, application norms, and candidate expectations.

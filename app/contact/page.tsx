@@ -1,6 +1,6 @@
 import { ContactForm } from "@/components/contact/ContactForm";
 import { Footer } from "@/components/site/Footer";
-import { ButtonLink, buttonClassName } from "@/components/ui/Button";
+import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { CONTACT_EMAIL } from "@/data/site";
 import { createPageMetadata } from "@/lib/seo";

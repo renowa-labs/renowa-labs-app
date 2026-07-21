@@ -1,9 +1,10 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
+import { Turnstile } from "@marsidev/react-turnstile";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { buttonClassName } from "@/components/ui/Button";
 import { CONTACT_EMAIL } from "@/data/site";
 import { contactFormSchema, type ContactFormData, type ContactFormInput } from "@/lib/contact/schema";
@@ -12,10 +13,14 @@ import type { ContactApiResponse } from "@/lib/contact/types";
 const fieldClassName =
   "min-h-12 w-full rounded-[4px] border border-[var(--border)] bg-[var(--surface)] px-4 text-sm text-[color:var(--foreground)] outline-none transition placeholder:text-[color:var(--muted-foreground)] focus:border-[color:var(--foreground)] aria-[invalid=true]:border-red-500";
 
-type SubmissionStatus = { type: "success" | "error"; message: string } | null;
+const turnstileSiteKey =
+  process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY : "1x00000000000000000000AA";
+const turnstileErrorMessage = "Verification could not be completed. Please try again.";
 
 export function ContactForm() {
-  const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus>(null);
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileError, setTurnstileError] = useState("");
+  const [turnstileKey, setTurnstileKey] = useState(0);
   const {
     register,
     handleSubmit,
@@ -34,14 +39,22 @@ export function ContactForm() {
     },
   });
 
+  function resetTurnstile() {
+    setTurnstileToken("");
+    setTurnstileKey((key) => key + 1);
+  }
+
   async function onSubmit(values: ContactFormData) {
-    setSubmissionStatus(null);
+    if (!turnstileToken) {
+      setTurnstileError("Please complete verification before sending your message.");
+      return;
+    }
 
     try {
       const result = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+        body: JSON.stringify({ ...values, turnstileToken }),
       });
       const payload = (await result.json()) as ContactApiResponse;
 
@@ -54,16 +67,34 @@ export function ContactForm() {
             }
           }
         }
-        setSubmissionStatus({ type: "error", message: payload.message });
+        resetTurnstile();
+        toast.error("Message not sent", {
+          description: payload.message,
+          action: {
+            label: "Email us",
+            onClick: () => {
+              window.location.href = `mailto:${CONTACT_EMAIL}`;
+            },
+          },
+        });
         return;
       }
 
+      resetTurnstile();
       reset();
-      setSubmissionStatus({ type: "success", message: payload.message });
+      toast.success("Message sent", {
+        description: "Thanks for reaching out. We will get back to you soon.",
+      });
     } catch {
-      setSubmissionStatus({
-        type: "error",
-        message: "We could not connect to the message service. Please try again or email us directly.",
+      resetTurnstile();
+      toast.error("Message not sent", {
+        description: "We could not connect to the message service. Please try again or email us directly.",
+        action: {
+          label: "Email us",
+          onClick: () => {
+            window.location.href = `mailto:${CONTACT_EMAIL}`;
+          },
+        },
       });
     }
   }
@@ -145,13 +176,52 @@ export function ContactForm() {
           <input id="contact-website" {...register("website")} type="text" tabIndex={-1} autoComplete="off" />
         </div>
 
-        <p className="text-[11px] leading-5 text-[color:var(--muted-foreground)]">
+        {turnstileSiteKey ? (
+          <Turnstile
+            key={turnstileKey}
+            siteKey={turnstileSiteKey}
+            onSuccess={(token) => {
+              setTurnstileToken(token);
+              setTurnstileError("");
+            }}
+            onExpire={resetTurnstile}
+            onError={() => {
+              setTurnstileToken("");
+              setTurnstileError(turnstileErrorMessage);
+            }}
+            onUnsupported={() => {
+              setTurnstileToken("");
+              setTurnstileError(turnstileErrorMessage);
+            }}
+            options={{
+              appearance: "interaction-only",
+              execution: "render",
+              theme: "auto",
+              size: "flexible",
+              action: "contact_form",
+              responseField: false,
+              refreshExpired: "never",
+              retry: "never",
+            }}
+            scriptOptions={{
+              onError: () => {
+                setTurnstileToken("");
+                setTurnstileError(turnstileErrorMessage);
+              },
+            }}
+          />
+        ) : null}
+        <p aria-live="polite" role="status" className={turnstileError ? "text-xs leading-5 text-red-500" : "sr-only"}>
+          {turnstileError}
+        </p>
+
+        {/* <p className="text-[11px] leading-5 text-[color:var(--muted-foreground)]">
           By sending this form, you agree that we may use your details to respond to your enquiry. See our{" "}
           <Link href="/privacy" className="underline underline-offset-4 hover:text-[color:var(--foreground)]">
             privacy notice
           </Link>
           .
-        </p>
+        </p> */}
 
         <button
           type="submit"
@@ -161,20 +231,6 @@ export function ContactForm() {
           {isSubmitting ? "Sending…" : "Send message"}
         </button>
 
-        {submissionStatus ? (
-          <p
-            role={submissionStatus.type === "error" ? "alert" : "status"}
-            aria-live={submissionStatus.type === "error" ? "assertive" : "polite"}
-            className={submissionStatus.type === "success" ? "text-sm leading-6 text-emerald-500" : "text-sm leading-6 text-red-500"}
-          >
-            {submissionStatus.message}{" "}
-            {submissionStatus.type === "error" ? (
-              <a href={`mailto:${CONTACT_EMAIL}`} className="font-semibold underline underline-offset-4">
-                Email {CONTACT_EMAIL}
-              </a>
-            ) : null}
-          </p>
-        ) : null}
       </div>
     </form>
   );
@@ -208,4 +264,3 @@ function Field({
     </label>
   );
 }
-

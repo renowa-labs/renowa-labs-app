@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/site/Header";
 import { PageTransition } from "@/components/site/PageTransition";
+import { ToastProvider } from "@/components/site/ToastProvider";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
   COMPANY_KNOWS_ABOUT,
@@ -11,6 +12,7 @@ import {
   SITE_NAME,
   SITE_POSITIONING,
   SITE_URL,
+  LINKEDIN_URL,
 } from "@/data/site";
 
 const geistSans = localFont({
@@ -48,7 +50,7 @@ export const metadata: Metadata = {
         url: "/og/renowa-og.svg",
         width: 1200,
         height: 630,
-        alt: "Renowa Labs — AI-powered software products built in Azerbaijan",
+        alt: "Renowa Labs — AI-powered software products",
       },
     ],
   },
@@ -61,11 +63,21 @@ export const metadata: Metadata = {
   category: "technology",
   icons: {
     icon: [
-      { url: "/logo/compact/renowa-labs-compact-on-dark-background.png", sizes: "509x707", type: "image/png" },
-      { url: "/logo/compact/renowa-labs-compact-on-dark-background.svg", type: "image/svg+xml" },
+      {
+        url: "/logo/compact/renowa-labs-favicon-light.png",
+        sizes: "512x512",
+        type: "image/png",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/logo/compact/renowa-labs-favicon-dark.png",
+        sizes: "512x512",
+        type: "image/png",
+        media: "(prefers-color-scheme: dark)",
+      },
     ],
-    shortcut: "/logo/compact/renowa-labs-compact-on-dark-background.png",
-    apple: [{ url: "/logo/compact/renowa-labs-compact-on-dark-background.png", sizes: "509x707", type: "image/png" }],
+    shortcut: "/logo/compact/renowa-labs-favicon-dark.png",
+    apple: [{ url: "/logo/compact/renowa-labs-favicon-light.png", sizes: "512x512", type: "image/png" }],
   },
 };
 
@@ -78,11 +90,8 @@ const structuredData = {
   email: CONTACT_EMAIL,
   description: SITE_DESCRIPTION,
   slogan: SITE_POSITIONING,
-  foundingLocation: {
-    "@type": "Place",
-    name: "Azerbaijan",
-  },
   knowsAbout: COMPANY_KNOWS_ABOUT,
+  sameAs: [LINKEDIN_URL],
 };
 
 const themeScript = `
@@ -117,6 +126,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <Header />
         <PageTransition>{children}</PageTransition>
+        <ToastProvider />
         <JsonLd data={structuredData} />
       </body>
     </html>

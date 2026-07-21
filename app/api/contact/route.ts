@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { CONTACT_EMAIL, SITE_URL } from "@/data/site";
 import { consumeContactAttempt, isRepeatedContact, rememberContact } from "@/lib/contact/rate-limit";
 import { contactFormSchema } from "@/lib/contact/schema";
+import { verifyTurnstileToken } from "@/lib/contact/turnstile";
 import type { ContactApiResponse } from "@/lib/contact/types";
 import { MailConfigurationError, sendContactEmail } from "@/lib/email/contact-mailer";
 
@@ -29,11 +30,6 @@ export async function POST(request: Request) {
     return response({ ok: false, message: "Your message is too large to submit." }, 413);
   }
 
-  const identifier = getClientIdentifier(request);
-  if (!consumeContactAttempt(identifier)) {
-    return response({ ok: false, message: "Too many attempts. Please wait a few minutes and try again." }, 429);
-  }
-
   let body: unknown;
   try {
     const rawBody = await request.text();
@@ -43,10 +39,6 @@ export async function POST(request: Request) {
     body = JSON.parse(rawBody);
   } catch {
     return response({ ok: false, message: "The submitted form could not be read." }, 400);
-  }
-
-  if (typeof body === "object" && body !== null && "website" in body && String(body.website).trim()) {
-    return response({ ok: true, message: "Thanks. Your message has been received." }, 200);
   }
 
   const parsed = contactFormSchema.safeParse(body);
@@ -61,12 +53,25 @@ export async function POST(request: Request) {
     );
   }
 
+  if (parsed.data.website) {
+    return response({ ok: true, message: "Thanks. Your message has been received." }, 200);
+  }
+
+  const identifier = getClientIdentifier(request);
+  if (!consumeContactAttempt(identifier)) {
+    return response({ ok: false, message: "Too many attempts. Please wait a few minutes and try again." }, 429);
+  }
+
   const fingerprint = createHash("sha256")
     .update(`${parsed.data.email}\u0000${parsed.data.subject}\u0000${parsed.data.message}`)
     .digest("hex");
 
   if (isRepeatedContact(identifier, fingerprint)) {
     return response({ ok: false, message: "This message was already submitted. Please wait before sending it again." }, 429);
+  }
+
+  if (!(await verifyTurnstileToken((body as { turnstileToken?: unknown }).turnstileToken))) {
+    return response({ ok: false, message: "We could not verify your submission. Please try again." }, 403);
   }
 
   try {
@@ -85,4 +90,3 @@ export async function POST(request: Request) {
     return response({ ok: false, message: unavailableMessage }, 503);
   }
 }
-

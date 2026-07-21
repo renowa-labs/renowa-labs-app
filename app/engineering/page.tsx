@@ -23,7 +23,7 @@ export default function EngineeringPage() {
           <SectionHeader
             eyebrow="Engineering"
             title="How the products are shaped."
-            description="Original notes on product engineering, data quality, candidate experience, and building AI-powered software from Azerbaijan."
+            description="Original notes on product engineering, data quality, candidate experience, and building AI-powered software."
           />
 
           <section className="mt-12 grid gap-4 md:grid-cols-2" aria-label="Published engineering articles">
