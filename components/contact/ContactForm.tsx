@@ -201,7 +201,7 @@ export function ContactForm() {
               action: "contact_form",
               responseField: false,
               refreshExpired: "never",
-              retry: "never",
+              retry: process.env.NODE_ENV === "production" ? "auto" : "never",
             }}
             scriptOptions={{
               onError: () => {
