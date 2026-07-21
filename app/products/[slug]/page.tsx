@@ -44,7 +44,9 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
           url: product.screenshotPlaceholder,
           width: product.iconImage ? 1024 : 720,
           height: product.iconImage ? 1024 : 520,
-          alt: product.iconImage ? `${product.name} app icon` : `${product.name} product visual`,
+          alt: product.iconImage
+            ? `${product.name} ${product.platform === "Web" ? "logo" : "app icon"}`
+            : `${product.name} product visual`,
         },
       ],
     },
@@ -69,6 +71,9 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
   const launchUrl = product.launchUrl ?? product.appStoreUrl;
   const launchLabel = product.launchLabel ?? "Open App Store";
   const launchStyle = { "--product-accent": product.accent } as CSSProperties;
+  const detailLabels = product.tags
+    ? [product.status, ...product.tags]
+    : [product.platform, product.status, product.category];
 
   return (
     <>
@@ -84,7 +89,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
           <section className="grid gap-10 lg:grid-cols-[1fr_0.86fr] lg:items-start">
             <div>
               <div className="flex flex-wrap gap-2">
-                {[product.platform, product.status, product.category].map((item) => (
+                {detailLabels.map((item) => (
                   <span
                     key={item}
                     className="rounded-sm border border-[var(--border)] px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-[color:var(--muted-foreground)]"
@@ -96,10 +101,15 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               <h1 className="mt-6 text-balance text-3xl font-semibold leading-[1.06] text-[color:var(--foreground)] sm:text-5xl">
                 {product.name}
               </h1>
+              {product.tagline ? (
+                <p className="mt-5 max-w-2xl text-pretty text-base font-semibold leading-7 text-[color:var(--foreground)]">
+                  {product.tagline}
+                </p>
+              ) : null}
               <p className="mt-5 max-w-2xl text-pretty text-sm leading-7 text-[color:var(--muted-foreground)]">
                 {product.shortDescription}
               </p>
-              <p className="mt-8 max-w-2xl text-sm leading-7 text-[color:var(--muted-foreground)]">
+              <p className="mt-8 max-w-2xl whitespace-pre-line text-sm leading-7 text-[color:var(--muted-foreground)]">
                 {product.longDescription}
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -122,7 +132,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                 <div className="grid gap-5 text-center">
                   <Image
                     src={product.iconImage}
-                    alt={`${product.name} app icon`}
+                    alt={`${product.name} ${product.platform === "Web" ? "logo" : "app icon"}`}
                     width={168}
                     height={168}
                     priority
@@ -130,7 +140,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                   />
                   <div>
                     <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[color:var(--muted-foreground)]">
-                      App Store
+                      {product.launchIcon === "none" ? product.platform : "App Store"}
                     </p>
                     <p className="mt-2 text-sm font-semibold uppercase tracking-[0.16em] text-[color:var(--foreground)]">
                       {product.name}

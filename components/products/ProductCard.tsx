@@ -14,6 +14,7 @@ export function ProductCard({ product }: { product: Product }) {
   const launchUrl = product.launchUrl ?? product.appStoreUrl;
   const launchLabel = product.launchLabel ?? "App Store";
   const launchStyle = { "--product-accent": product.accent } as CSSProperties;
+  const categoryLabels = product.tags ?? [product.category];
 
   useGSAP(
     () => {
@@ -46,7 +47,7 @@ export function ProductCard({ product }: { product: Product }) {
           {product.iconImage ? (
             <Image
               src={product.iconImage}
-              alt={`${product.name} app icon`}
+              alt={`${product.name} ${product.platform === "Web" ? "logo" : "app icon"}`}
               width={48}
               height={48}
               className="size-full rounded-[4px] object-cover"
@@ -61,11 +62,19 @@ export function ProductCard({ product }: { product: Product }) {
       </div>
       <div className="mt-6 flex-1">
         <h2 className="text-lg font-semibold uppercase tracking-[0.16em] text-[color:var(--foreground)]">{product.name}</h2>
+        {product.tagline ? (
+          <p className="mt-3 text-xs font-semibold leading-6 text-[color:var(--foreground)]">{product.tagline}</p>
+        ) : null}
         <p className="mt-3 text-xs leading-6 text-[color:var(--muted-foreground)]">{product.shortDescription}</p>
         <div className="mt-5 flex flex-wrap gap-2">
-          <span className="rounded-sm border border-[var(--border)] px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-[color:var(--foreground)]">
-            {product.category}
-          </span>
+          {categoryLabels.map((label) => (
+            <span
+              key={label}
+              className="rounded-sm border border-[var(--border)] px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-[color:var(--foreground)]"
+            >
+              {label}
+            </span>
+          ))}
           <span className="rounded-sm border border-[var(--border)] px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-[color:var(--muted-foreground)]">
             {product.status}
           </span>

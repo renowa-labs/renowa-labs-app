@@ -100,7 +100,7 @@ export function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-40 bg-transparent">
       <div className="flex h-16 w-full items-start justify-between px-5 pt-4 sm:px-8">
-        <Wordmark />
+        <Wordmark size="header" />
         <div className="flex items-center gap-5">
           <ThemeToggle />
           <button
@@ -155,7 +155,7 @@ export function Header() {
             width={1493}
             height={246}
             priority
-            className="theme-logo-dark absolute left-[-4vw] top-1/2 w-[min(68rem,94vw)] max-w-none -translate-y-1/2 opacity-[0.08] blur-[2px]"
+            className="theme-logo-dark absolute left-[2vw] top-1/2 w-[min(68rem,94vw)] max-w-none -translate-y-1/2 opacity-[0.08] blur-[2px]"
           />
           <Image
             src="/logo/horizontal/renowa-labs-horizontal-light-exact.svg"
@@ -164,7 +164,7 @@ export function Header() {
             width={1493}
             height={246}
             priority
-            className="theme-logo-light absolute left-[-4vw] top-1/2 w-[min(68rem,94vw)] max-w-none -translate-y-1/2 opacity-[0.08] blur-[2px]"
+            className="theme-logo-light absolute left-[2vw] top-1/2 w-[min(68rem,94vw)] max-w-none -translate-y-1/2 opacity-[0.08] blur-[2px]"
           />
           <div className="absolute left-[8vw] top-1/2 hidden max-w-sm -translate-y-1/2 text-[color:var(--foreground)] lg:block">
             <p className="renowa-menu-reveal text-[11px] uppercase tracking-[0.28em] text-[color:var(--muted-foreground)]">

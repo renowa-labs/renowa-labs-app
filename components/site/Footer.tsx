@@ -17,7 +17,7 @@ export function Footer() {
         aria-hidden="true"
         width={1493}
         height={246}
-        className="theme-logo-dark pointer-events-none absolute bottom-[-3.5rem] left-1/2 z-0 w-[min(58rem,118vw)] max-w-none -translate-x-1/2 opacity-[0.07] sm:bottom-[-5rem] lg:w-[68rem]"
+        className="theme-logo-dark pointer-events-none absolute bottom-3 left-1/2 z-0 w-[min(58rem,92vw)] max-w-none -translate-x-1/2 opacity-[0.07] sm:bottom-5 lg:w-[min(68rem,92vw)]"
       />
       <Image
         src="/logo/horizontal/renowa-labs-horizontal-light-exact.svg"
@@ -25,7 +25,7 @@ export function Footer() {
         aria-hidden="true"
         width={1493}
         height={246}
-        className="theme-logo-light pointer-events-none absolute bottom-[-3.5rem] left-1/2 z-0 w-[min(58rem,118vw)] max-w-none -translate-x-1/2 opacity-[0.06] sm:bottom-[-5rem] lg:w-[68rem]"
+        className="theme-logo-light pointer-events-none absolute bottom-3 left-1/2 z-0 w-[min(58rem,92vw)] max-w-none -translate-x-1/2 opacity-[0.06] sm:bottom-5 lg:w-[min(68rem,92vw)]"
       />
       <Container className="relative z-10 grid gap-14">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-start">
@@ -64,11 +64,14 @@ export function Footer() {
             </div>
             <div className="grid gap-3">
               <p className="text-[color:var(--foreground)]">Products</p>
-              <Link href="/products/signal-notes" className={footerLinkClass}>
-                Signal Notes
+              <Link href="/products/save-more-dreams" className={footerLinkClass}>
+                Save More Dreams
               </Link>
-              <Link href="/products/local-lens" className={footerLinkClass}>
-                Local Lens
+              <Link href="/products/justforhack" className={footerLinkClass}>
+                JustForHack
+              </Link>
+              <Link href="/products/hirinq" className={footerLinkClass}>
+                Hirinq
               </Link>
               <Link href="/products/task-frame" className={footerLinkClass}>
                 Task Frame

@@ -14,6 +14,7 @@
   --field-spot: rgba(255, 255, 255, 0.025);
   --field-wash: rgba(255, 255, 255, 0.015);
   --grid-line: rgba(255, 255, 255, 0.035);
+  --grid-edge: rgba(255, 255, 255, 0.08);
   --control-bg: rgba(31, 31, 31, 0.9);
   --control-bg-strong: rgba(31, 31, 31, 0.98);
 }
@@ -31,7 +32,8 @@
   --glow: rgba(23, 23, 23, 0.1);
   --field-spot: rgba(0, 0, 0, 0.045);
   --field-wash: rgba(0, 0, 0, 0.018);
-  --grid-line: rgba(0, 0, 0, 0.04);
+  --grid-line: rgba(23, 23, 23, 0.072);
+  --grid-edge: rgba(23, 23, 23, 0.1);
   --control-bg: rgba(239, 238, 232, 0.9);
   --control-bg-strong: rgba(239, 238, 232, 0.98);
 }

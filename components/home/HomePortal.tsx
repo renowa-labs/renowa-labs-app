@@ -46,12 +46,12 @@ export function HomePortal() {
             [ AI / MOBILE PRODUCTS / APPLIED SOFTWARE ]
           </p>
           <RenowaGlyphMark className="home-reveal" />
-          <h1 className="home-reveal mt-9 text-balance text-xl font-semibold leading-snug text-[color:var(--foreground)] sm:text-2xl">
+          {/* <h1 className="home-reveal mt-9 text-balance text-xl font-semibold leading-snug text-[color:var(--foreground)] sm:text-2xl">
             AI-first products, built  for the world.
           </h1>
           <p className="home-reveal mt-5 max-w-2xl text-pretty text-xs leading-6 text-[color:var(--muted-foreground)] sm:text-sm">
             Renowa Labs is a small technology lab creating intelligent software for local and global markets.
-          </p>
+          </p> */}
 
           <div className="home-reveal mt-10 flex flex-wrap justify-center gap-x-7 gap-y-3">
             {products.map((product, index) => (
@@ -90,7 +90,7 @@ export function HomePortal() {
           </div>
         </section>
       </div>
-      <HackerNewsTicker />
+      {/* <HackerNewsTicker /> */}
     </main>
   );
 }

@@ -5,12 +5,16 @@ import { cn } from "@/lib/cn";
 export function Wordmark({
   href = "/",
   className,
+  size = "default",
   onClick,
 }: {
   href?: string;
   className?: string;
+  size?: "default" | "header";
   onClick?: () => void;
 }) {
+  const logoSize = size === "header" ? "w-32 sm:w-40" : "w-28 sm:w-32";
+
   return (
     <Link
       href={href}
@@ -27,7 +31,7 @@ export function Wordmark({
         width={1493}
         height={246}
         priority
-        className="theme-logo-dark h-auto w-28 sm:w-32"
+        className={cn("theme-logo-dark h-auto", logoSize)}
       />
       <Image
         src="/logo/horizontal/renowa-labs-horizontal-light-exact.svg"
@@ -35,7 +39,7 @@ export function Wordmark({
         width={1493}
         height={246}
         priority
-        className="theme-logo-light h-auto w-28 sm:w-32"
+        className={cn("theme-logo-light h-auto", logoSize)}
       />
     </Link>
   );

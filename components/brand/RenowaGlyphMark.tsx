@@ -31,11 +31,11 @@ export function RenowaGlyphMark({ className }: { className?: string }) {
           </div>
         ))}
       </div>
-      <div className="mt-4 flex items-center justify-center gap-3 text-[10px] uppercase tracking-[0.32em] text-[color:var(--muted-foreground)]">
+      {/* <div className="mt-4 flex items-center justify-center gap-3 text-[10px] uppercase tracking-[0.32em] text-[color:var(--muted-foreground)]">
         <span>Product Systems</span>
         <span className="h-px w-10 bg-[var(--border)]" />
         <span>AZ / World</span>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { cn } from "@/lib/cn";
 
 type Theme = "dark" | "light";
 
@@ -55,19 +56,26 @@ function applyTheme(theme: Theme) {
 
 export function ThemeToggle() {
   const theme = useSyncExternalStore(subscribeTheme, readTheme, () => "dark");
+  const nextTheme = theme === "dark" ? "light" : "dark";
 
   return (
     <button
       type="button"
-      className="cursor-pointer group inline-flex items-center gap-2 rounded-sm text-[11px] uppercase tracking-[0.28em] text-[color:var(--muted-foreground)] transition hover:text-[color:var(--foreground)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
-      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+      className="group inline-flex min-h-8 cursor-pointer items-center gap-3 rounded-sm text-[12px] uppercase tracking-[0.28em] text-[color:var(--muted-foreground)] transition hover:text-[color:var(--foreground)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
+      aria-label={`Switch to ${nextTheme} mode`}
       onClick={() => {
-        const nextTheme = theme === "dark" ? "light" : "dark";
         applyTheme(nextTheme);
       }}
     >
-      <span className="size-1.5 rounded-full border border-current transition group-hover:scale-125" aria-hidden="true" />
-      <span>{theme}</span>
+      <span className="relative size-5 shrink-0 overflow-hidden rounded-full border border-current" aria-hidden="true">
+        <span
+          className={cn(
+            "absolute inset-y-0 left-0 w-1/2 bg-current transition-transform duration-300",
+            theme === "light" ? "translate-x-full" : "translate-x-0",
+          )}
+        />
+      </span>
+      <span>{nextTheme}</span>
     </button>
   );
 }
