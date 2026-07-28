@@ -1,0 +1,17 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .mono { font-family: "Courier New", Courier, monospace; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L9,5 L0,10 Z" fill="context-stroke"/>
+    </marker>
+    <pattern id="paper" width="9" height="9" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.45" fill="#1A1930" opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#E8E1D8"/>
+  <rect width="1200" height="630" fill="url(#paper)" opacity="0.42"/>
+<image x="946" y="72" width="90" height="90" preserveAspectRatio="xMidYMid meet" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCnZpZXdCb3g9IjAgMCA0OTAgNDc1Igpyb2xlPSJpbWciCmFyaWEtbGFiZWw9IkhpcmlucSBjb21wYWN0IG1hcmsiPgoKPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTIwIC01NSkiPgogIDxwYXRoIGQ9Ik0gNDQzIDMxOQpBIDIwMyAyMDMgMCAxIDAgMzI0IDQ2NApMIDMyMCA0NTUKTCAyNjIgMzk3CkEgMTE1IDExNSAwIDEgMSAzNTYgMzE3CkwgMzcxIDMzNgpMIDI2OSAzMzgKTCAyNjMgMzQxCkwgNDIxIDQ5NwpMIDQ3OSA0NDQKTCA0ODAgNDM2CkwgNDIyIDM3OApMIDQ0MyAzMTkKWiIgZmlsbD0iIzRGNDZFRiIvPgo8L2c+Cjwvc3ZnPgo="/><rect x="392" y="38" width="416" height="554" rx="46" fill="#22213A" stroke="#22213A" stroke-width="1"/><rect x="412" y="62" width="376" height="506" rx="32" fill="#F9F8F4" stroke="#F9F8F4" stroke-width="1"/><rect x="535" y="78" width="130" height="8" rx="4" fill="#D6D2CA" stroke="none" stroke-width="1"/><rect x="448" y="123" width="142" height="28" rx="14" fill="#E1DFFC" stroke="none" stroke-width="1"/><text class="mono" x="519" y="141" font-size="11" font-weight="700" fill="#4F46EF" text-anchor="middle" letter-spacing="1.1">FOR YOU</text><text x="448" y="212" font-size="46" font-weight="800" fill="#1A1930" letter-spacing="-2">Product</text><text x="448" y="258" font-size="46" font-weight="800" fill="#1A1930" letter-spacing="-2">Designer</text><text class="mono" x="448" y="294" font-size="13" font-weight="800" fill="#6A6670" letter-spacing="1">BAKU · HYBRID</text><rect x="448" y="333" width="304" height="2" rx="0" fill="#DDD8CF" stroke="none" stroke-width="1"/><text class="mono" x="448" y="371" font-size="12" font-weight="800" fill="#4F46EF" letter-spacing="1">ONE GOOD NEXT STEP</text><rect x="448" y="412" width="304" height="76" rx="18" fill="#4F46EF" stroke="#4F46EF" stroke-width="1"/><text x="600" y="461" font-size="24" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">SAVE</text></svg>

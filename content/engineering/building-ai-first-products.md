@@ -9,7 +9,7 @@ tags:
   - Artificial Intelligence
   - Product Engineering
 relatedProduct:
-coverImage: /og/renowa-og.svg
+coverImage: /engineering/covers/building-ai-first-products.webp
 canonicalUrl: https://www.renowa-labs.com/engineering/building-ai-first-products
 indexable: true
 status: published

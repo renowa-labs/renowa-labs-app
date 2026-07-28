@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: SITE_NAME,
   title: {
-    default: "Renowa Labs — AI-Powered Software Products",
+    default: "Renowa Labs — Products for Humans and AI",
     template: "%s | Renowa Labs",
   },
   description: SITE_DESCRIPTION,
@@ -40,25 +40,25 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_AZ",
+    locale: "en_US",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: "Renowa Labs — AI-Powered Software Products",
+    title: "Renowa Labs — Products for Humans and AI",
     description: SITE_DESCRIPTION,
     images: [
       {
-        url: "/og/renowa-og.svg",
+        url: "/og/renowa-og.png",
         width: 1200,
         height: 630,
-        alt: "Renowa Labs — AI-powered software products",
+        alt: "Renowa Labs — products that make humans' and AIs' lives easier",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Renowa Labs — AI-Powered Software Products",
+    title: "Renowa Labs — Products for Humans and AI",
     description: SITE_DESCRIPTION,
-    images: ["/og/renowa-og.svg"],
+    images: ["/og/renowa-og.png"],
   },
   category: "technology",
 };

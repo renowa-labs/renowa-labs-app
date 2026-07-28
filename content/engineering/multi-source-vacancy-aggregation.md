@@ -9,7 +9,7 @@ tags:
   - Recruitment Technology
   - Data Platforms
 relatedProduct: hirinq
-coverImage: /og/renowa-og.svg
+coverImage: /engineering/covers/vacancy-aggregation.webp
 canonicalUrl: https://www.renowa-labs.com/engineering/multi-source-vacancy-aggregation
 indexable: false
 status: draft

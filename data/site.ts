@@ -3,16 +3,16 @@ export const SITE_URL = "https://www.renowa-labs.com";
 export const SITE_NAME = "Renowa Labs";
 
 export const SITE_DESCRIPTION =
-  "Renowa Labs builds AI-powered software products for people and teams everywhere.";
+  "Renowa Labs designs and builds AI products, mobile applications, data platforms, and digital services for people and teams worldwide.";
 
 export const SITE_POSITIONING =
-  "AI-powered products for people and teams everywhere.";
+  "We build products that make both humans' and AIs' lives easier.";
 
 export const CONTACT_EMAIL = "info@renowa-labs.com";
 
 export const LINKEDIN_URL = "https://www.linkedin.com/company/renowa-labs/";
 
-export const SITE_UPDATED_AT = "2026-07-21";
+export const SITE_UPDATED_AT = "2026-07-22";
 
 export const COMPANY_KNOWS_ABOUT = [
   "AI products",
@@ -21,6 +21,10 @@ export const COMPANY_KNOWS_ABOUT = [
   "Data platforms",
   "Applied software",
   "Software engineering",
+  "Startup operations",
+  "SaaS infrastructure",
+  "Cybersecurity",
+  "Payments and billing",
 ] as const;
 
 export const NAV_ITEMS = [

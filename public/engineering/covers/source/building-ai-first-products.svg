@@ -1,0 +1,17 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .mono { font-family: "Courier New", Courier, monospace; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L9,5 L0,10 Z" fill="context-stroke"/>
+    </marker>
+    <pattern id="paper" width="9" height="9" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.45" fill="#171715" opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#E8E1D4"/>
+  <rect width="1200" height="630" fill="url(#paper)" opacity="0.42"/>
+<rect x="209" y="83" width="782" height="464" rx="28" fill="#F8F5EE" stroke="#171715" stroke-width="2"/><rect x="257" y="131" width="686" height="368" rx="20" fill="#625BBA" stroke="#625BBA" stroke-width="1"/><text x="600" y="328" font-size="210" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="-12">AI</text><rect x="682" y="364" width="207" height="72" rx="36" fill="#F8F5EE" stroke="#F8F5EE" stroke-width="1"/><text class="mono" x="785" y="408" font-size="16" font-weight="800" fill="#171715" text-anchor="middle" letter-spacing="1.3">IS A LAYER</text><rect x="257" y="467" width="210" height="32" rx="16" fill="#F1E6DE" stroke="none" stroke-width="1"/><text class="mono" x="362" y="488" font-size="10" font-weight="800" fill="#8A5449" text-anchor="middle" letter-spacing="0.8">NOT THE WHOLE PRODUCT</text></svg>

@@ -1,5 +1,5 @@
 import { getPublishedArticles } from "@/lib/engineering/content";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/data/site";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_UPDATED_AT, SITE_URL } from "@/data/site";
 
 export const dynamic = "force-static";
 
@@ -14,7 +14,7 @@ function escapeXml(value: string): string {
 
 export function GET() {
   const articles = getPublishedArticles();
-  const lastBuildDate = new Date(`${articles[0]?.updatedAt ?? "2026-07-21"}T00:00:00Z`).toUTCString();
+  const lastBuildDate = new Date(`${articles[0]?.updatedAt ?? SITE_UPDATED_AT}T00:00:00Z`).toUTCString();
   const items = articles
     .map((article) => {
       const url = `${SITE_URL}/engineering/${article.slug}`;

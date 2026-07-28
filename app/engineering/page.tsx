@@ -9,7 +9,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "Engineering",
   description:
-    "Original engineering articles from Renowa Labs about AI products, recruitment technology, data quality, mobile applications, and software engineering.",
+    "Practical Renowa Labs guides for founders and product teams covering AI products, SaaS operations, security, payments, cloud infrastructure, and software engineering.",
   path: "/engineering",
 });
 
@@ -22,8 +22,8 @@ export default function EngineeringPage() {
         <Container className="pb-20">
           <SectionHeader
             eyebrow="Engineering"
-            title="How the products are shaped."
-            description="Original notes on product engineering, data quality, candidate experience, and building AI-powered software."
+            title="Field guides for building and operating software."
+            description="Original, researched guidance on AI products, startup operations, security, payments, infrastructure, and the systems behind dependable digital products."
           />
 
           <section className="mt-12 grid gap-4 md:grid-cols-2" aria-label="Published engineering articles">

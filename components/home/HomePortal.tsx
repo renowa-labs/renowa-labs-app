@@ -42,14 +42,14 @@ export function HomePortal() {
       <div className="relative z-10 mx-auto flex min-h-0 w-full max-w-5xl flex-1 flex-col justify-center">
         <section className="mx-auto flex w-full flex-col items-center justify-center text-center">
           <p className="home-reveal mb-7 text-[11px] uppercase leading-none tracking-[0.34em] text-[color:var(--muted-foreground)]">
-            [ AI / MOBILE PRODUCTS / APPLIED SOFTWARE ]
+            [ PRODUCTS / AI / SOFTWARE / DIGITAL SERVICES ]
           </p>
           <RenowaGlyphMark className="home-reveal" />
           <h1 className="home-reveal mt-7 max-w-3xl text-balance text-base font-semibold leading-7 text-[color:var(--foreground)] sm:text-lg">
-            Renowa Labs builds AI-powered software products for people and teams everywhere.
+            We build products that make both humans&apos; and AIs&apos; lives easier.
           </h1>
           <p className="home-reveal mt-3 max-w-3xl text-pretty text-xs leading-6 text-[color:var(--muted-foreground)]">
-            We work across artificial intelligence, mobile applications, recruitment technology, data platforms, and applied software.
+            Renowa Labs designs and builds AI products, mobile applications, data platforms, and digital services for people and teams worldwide.
           </p>
 
           <div className="home-reveal mt-7 flex flex-wrap justify-center gap-x-7 gap-y-3">

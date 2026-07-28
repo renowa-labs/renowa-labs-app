@@ -32,8 +32,8 @@ export async function generateMetadata({ params }: EngineeringArticlePageProps):
   if (!article) notFound();
 
   return createPageMetadata({
-    title: article.title,
-    description: article.description,
+    title: article.metaTitle ?? article.title,
+    description: article.metaDescription ?? article.description,
     path: article.canonicalUrl,
     image: article.coverImage,
     imageAlt: `${article.title} — Renowa Labs Engineering`,
@@ -56,11 +56,13 @@ export default async function EngineeringArticlePage({ params }: EngineeringArti
     "@context": "https://schema.org",
     "@type": "Article",
     headline: article.title,
-    description: article.description,
+    description: article.metaDescription ?? article.description,
     image: absoluteUrl(article.coverImage),
     datePublished: article.publishedAt,
     dateModified: article.updatedAt,
     mainEntityOfPage: articleUrl,
+    articleSection: article.category,
+    keywords: article.tags.join(", "),
     author: {
       "@type": "Organization",
       name: SITE_NAME,
@@ -112,7 +114,8 @@ export default async function EngineeringArticlePage({ params }: EngineeringArti
 
           <article className="mt-10">
             <header className="max-w-4xl">
-              <div className="flex flex-wrap gap-2">
+              <p className="text-[10px] uppercase tracking-[0.28em] text-[color:var(--foreground)]">{article.category}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
                 {article.tags.map((tag) => (
                   <span
                     key={tag}
@@ -142,6 +145,7 @@ export default async function EngineeringArticlePage({ params }: EngineeringArti
                 width={1200}
                 height={630}
                 priority
+                sizes="(min-width: 1024px) 1024px, calc(100vw - 2.5rem)"
                 className="aspect-[1200/630] w-full object-cover"
               />
             </div>

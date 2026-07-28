@@ -1,0 +1,17 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .mono { font-family: "Courier New", Courier, monospace; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L9,5 L0,10 Z" fill="context-stroke"/>
+    </marker>
+    <pattern id="paper" width="9" height="9" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.45" fill="#16212B" opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#DDE9EC"/>
+  <rect width="1200" height="630" fill="url(#paper)" opacity="0.42"/>
+<image x="1023" y="70" width="88" height="88" preserveAspectRatio="xMidYMid meet" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCnZpZXdCb3g9IjAgMCA0OTAgNDc1Igpyb2xlPSJpbWciCmFyaWEtbGFiZWw9IkhpcmlucSBjb21wYWN0IG1hcmsiPgoKPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTIwIC01NSkiPgogIDxwYXRoIGQ9Ik0gNDQzIDMxOQpBIDIwMyAyMDMgMCAxIDAgMzI0IDQ2NApMIDMyMCA0NTUKTCAyNjIgMzk3CkEgMTE1IDExNSAwIDEgMSAzNTYgMzE3CkwgMzcxIDMzNgpMIDI2OSAzMzgKTCAyNjMgMzQxCkwgNDIxIDQ5NwpMIDQ3OSA0NDQKTCA0ODAgNDM2CkwgNDIyIDM3OApMIDQ0MyAzMTkKWiIgZmlsbD0iIzRGNDZFRiIvPgo8L2c+Cjwvc3ZnPgo="/><rect x="255" y="161" width="545" height="302" rx="16" fill="#E2DED8" stroke="#C5C0B8" stroke-width="2"/><rect x="215" y="127" width="545" height="302" rx="16" fill="#F9F8F4" stroke="#C5C0B8" stroke-width="2"/><rect x="175" y="93" width="545" height="302" rx="16" fill="#FFFFFF" stroke="#16212B" stroke-width="2"/><text class="mono" x="222" y="147" font-size="13" font-weight="700" fill="#6B7376" letter-spacing="2">VACANCY</text><text x="222" y="232" font-size="46" font-weight="800" fill="#16212B" letter-spacing="-2">Product Designer</text><text class="mono" x="222" y="270" font-size="14" font-weight="700" fill="#6B7376" letter-spacing=".8">EXAMPLE COMPANY · BAKU · HYBRID</text><path d="M792 195 C910 195 911 403 790 403 C670 403 670 195 792 195" fill="none" stroke="#4F46EF" stroke-width="28" stroke-linecap="round"/><rect x="779" y="255" width="257" height="88" rx="8" fill="#E5F0E8" stroke="#5C9670" stroke-width="2"/><text class="mono" x="907" y="291" font-size="18" font-weight="800" fill="#5C9670" text-anchor="middle" letter-spacing="1">ONE JOB?</text><text class="mono" x="907" y="318" font-size="12" font-weight="700" fill="#16212B" text-anchor="middle" letter-spacing="1">OR THREE COPIES?</text></svg>

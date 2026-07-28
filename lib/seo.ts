@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SITE_NAME, SITE_URL } from "@/data/site";
 
-export const DEFAULT_OG_IMAGE = "/og/renowa-og.svg";
+export const DEFAULT_OG_IMAGE = "/og/renowa-og.png";
 
 export function absoluteUrl(path: string): string {
   if (path.startsWith("http://") || path.startsWith("https://")) return path;
@@ -57,7 +57,7 @@ export function createPageMetadata({
     },
     openGraph: {
       type,
-      locale: "en_AZ",
+      locale: "en_US",
       url: canonical,
       siteName: SITE_NAME,
       title,

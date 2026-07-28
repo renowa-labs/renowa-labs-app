@@ -1,0 +1,17 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .mono { font-family: "Courier New", Courier, monospace; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L9,5 L0,10 Z" fill="context-stroke"/>
+    </marker>
+    <pattern id="paper" width="9" height="9" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.45" fill="#162229" opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#E7EFF0"/>
+  <rect width="1200" height="630" fill="url(#paper)" opacity="0.42"/>
+<rect x="90" y="104" width="487" height="396" rx="10" fill="#F9FAF6" stroke="#162229" stroke-width="2"/><path d="M92 124 L334 313 L575 124" fill="none" stroke="#162229" stroke-width="4"/><text class="mono" x="132" y="163" font-size="13" font-weight="700" fill="#4F8064" letter-spacing="1.8">CRITICAL MAIL</text><text x="132" y="248" font-size="62" font-weight="800" fill="#162229" letter-spacing="-2">notify.</text><text class="mono" x="132" y="286" font-size="14" font-weight="700" fill="#5C696D" letter-spacing="1">RESET · INVOICE · ALERT</text><rect x="622" y="104" width="487" height="396" rx="10" fill="#202827" stroke="#202827" stroke-width="1"/><path d="M624 124 L866 313 L1107 124" fill="none" stroke="#F4F1EA" stroke-width="4"/><text class="mono" x="664" y="163" font-size="13" font-weight="700" fill="#AAB8B6" letter-spacing="1.8">PROMOTIONAL MAIL</text><text x="664" y="248" font-size="62" font-weight="800" fill="#FFFFFF" letter-spacing="-2">updates.</text><text class="mono" x="664" y="286" font-size="14" font-weight="700" fill="#B7C2C0" letter-spacing="1">NEWSLETTER · CAMPAIGN</text><rect x="564" y="268" width="72" height="72" rx="36" fill="#E86832" stroke="#E86832" stroke-width="1"/><text x="600" y="316" font-size="46" font-weight="500" fill="#FFFFFF" text-anchor="middle">≠</text></svg>

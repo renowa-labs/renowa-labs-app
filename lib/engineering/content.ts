@@ -15,10 +15,13 @@ const frontmatterDate = z.preprocess(
 const articleFrontmatterSchema = z.object({
   slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
   title: z.string().min(12).max(110),
+  metaTitle: z.string().min(12).max(110).optional(),
   description: z.string().min(50).max(220),
+  metaDescription: z.string().min(50).max(220).optional(),
   author: z.string().min(2).max(80),
   publishedAt: frontmatterDate,
   updatedAt: frontmatterDate,
+  category: z.string().min(2).max(50).default("Engineering"),
   tags: z.array(z.string().min(2).max(40)).min(1),
   relatedProduct: z.string().nullable(),
   coverImage: z.string().startsWith("/"),

@@ -1,0 +1,17 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .mono { font-family: "Courier New", Courier, monospace; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L9,5 L0,10 Z" fill="context-stroke"/>
+    </marker>
+    <pattern id="paper" width="9" height="9" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.45" fill="#FFFFFF" opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#202431"/>
+  <rect width="1200" height="630" fill="url(#paper)" opacity="0.42"/>
+<image x="1025" y="72" width="88" height="88" preserveAspectRatio="xMidYMid meet" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCnZpZXdCb3g9IjAgMCA0OTAgNDc1Igpyb2xlPSJpbWciCmFyaWEtbGFiZWw9IkhpcmlucSBjb21wYWN0IG1hcmsiPgoKPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTIwIC01NSkiPgogIDxwYXRoIGQ9Ik0gNDQzIDMxOQpBIDIwMyAyMDMgMCAxIDAgMzI0IDQ2NApMIDMyMCA0NTUKTCAyNjIgMzk3CkEgMTE1IDExNSAwIDEgMSAzNTYgMzE3CkwgMzcxIDMzNgpMIDI2OSAzMzgKTCAyNjMgMzQxCkwgNDIxIDQ5NwpMIDQ3OSA0NDQKTCA0ODAgNDM2CkwgNDIyIDM3OApMIDQ0MyAzMTkKWiIgZmlsbD0iIzRGNDZFRiIvPgo8L2c+Cjwvc3ZnPgo="/><rect x="154" y="182" width="332" height="258" rx="14" fill="#353B4B" stroke="#596173" stroke-width="2"/><rect x="203" y="143" width="332" height="258" rx="14" fill="#2C3140" stroke="#596173" stroke-width="2"/><rect x="252" y="104" width="332" height="258" rx="14" fill="#252A37" stroke="#596173" stroke-width="2"/><text class="mono" x="292" y="151" font-size="12" font-weight="700" fill="#B6BBC8" letter-spacing="2">SOURCE</text><text x="292" y="236" font-size="64" font-weight="800" fill="#FFFFFF" letter-spacing="-3">jobs</text><text class="mono" x="292" y="277" font-size="14" font-weight="800" fill="#7770FF" letter-spacing="2">EVERYWHERE</text><rect x="622" y="137" width="424" height="326" rx="18" fill="#F6F4EE" stroke="#F6F4EE" stroke-width="1"/><text class="mono" x="668" y="190" font-size="13" font-weight="700" fill="#64616B" letter-spacing="2">ONE CANDIDATE</text><text x="668" y="283" font-size="92" font-weight="800" fill="#17181C" letter-spacing="-4">FEED</text><rect x="668" y="328" width="252" height="18" rx="9" fill="#E86B50" stroke="none" stroke-width="1"/><text class="mono" x="668" y="383" font-size="12" font-weight="800" fill="#17181C" letter-spacing="1">CLEARER THAN THE SOURCES</text></svg>

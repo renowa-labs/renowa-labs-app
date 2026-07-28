@@ -9,7 +9,7 @@ tags:
   - Recruitment Technology
   - Mobile Product
 relatedProduct: hirinq
-coverImage: /og/renowa-og.svg
+coverImage: /engineering/covers/mobile-job-discovery.webp
 canonicalUrl: https://www.renowa-labs.com/engineering/mobile-first-job-discovery
 indexable: true
 status: published

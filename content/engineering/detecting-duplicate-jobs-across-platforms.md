@@ -10,7 +10,7 @@ tags:
   - Data Quality
   - Matching
 relatedProduct: hirinq
-coverImage: /og/renowa-og.svg
+coverImage: /engineering/covers/duplicate-jobs.webp
 canonicalUrl: https://www.renowa-labs.com/engineering/detecting-duplicate-jobs-across-platforms
 indexable: true
 status: published

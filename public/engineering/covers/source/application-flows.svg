@@ -1,0 +1,17 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .mono { font-family: "Courier New", Courier, monospace; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L9,5 L0,10 Z" fill="context-stroke"/>
+    </marker>
+    <pattern id="paper" width="9" height="9" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.45" fill="#1A1830" opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#EEEDFA"/>
+  <rect width="1200" height="630" fill="url(#paper)" opacity="0.42"/>
+<image x="1012" y="70" width="100" height="100" preserveAspectRatio="xMidYMid meet" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCnZpZXdCb3g9IjAgMCA0OTAgNDc1Igpyb2xlPSJpbWciCmFyaWEtbGFiZWw9IkhpcmlucSBjb21wYWN0IG1hcmsiPgoKPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTIwIC01NSkiPgogIDxwYXRoIGQ9Ik0gNDQzIDMxOQpBIDIwMyAyMDMgMCAxIDAgMzI0IDQ2NApMIDMyMCA0NTUKTCAyNjIgMzk3CkEgMTE1IDExNSAwIDEgMSAzNTYgMzE3CkwgMzcxIDMzNgpMIDI2OSAzMzgKTCAyNjMgMzQxCkwgNDIxIDQ5NwpMIDQ3OSA0NDQKTCA0ODAgNDM2CkwgNDIyIDM3OApMIDQ0MyAzMTkKWiIgZmlsbD0iIzRGNDZFRiIvPgo8L2c+Cjwvc3ZnPgo="/><rect x="156" y="185" width="888" height="266" rx="32" fill="#4F46EF" stroke="#4F46EF" stroke-width="1"/><text x="600" y="328" font-size="112" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="-6">APPLY</text><rect x="264" y="389" width="162" height="126" rx="14" fill="#FFFFFF" stroke="#1A1830" stroke-width="2"/><rect x="519" y="389" width="162" height="126" rx="14" fill="#FFFFFF" stroke="#E86A4F" stroke-width="2"/><rect x="774" y="389" width="162" height="126" rx="14" fill="#FFFFFF" stroke="#4F46EF" stroke-width="2"/><path d="M278 416 L345 469 L412 416" fill="none" stroke="#1A1830" stroke-width="4"/><path d="M533 416 L600 469 L667 416" fill="none" stroke="#E86A4F" stroke-width="4"/><rect x="800" y="416" width="110" height="72" rx="4" fill="none" stroke="#4F46EF" stroke-width="2"/><line x1="800" y1="438" x2="910" y2="438" stroke="#4F46EF" stroke-width="2" /><circle cx="814" cy="427" r="4" fill="#4F46EF" stroke="none" stroke-width="1"/><circle cx="830" cy="427" r="4" fill="#4F46EF" stroke="none" stroke-width="1"/><circle cx="846" cy="427" r="4" fill="#4F46EF" stroke="none" stroke-width="1"/><text class="mono" x="345" y="544" font-size="12" font-weight="800" fill="#1A1830" text-anchor="middle" letter-spacing="1.5">DIRECT</text><text class="mono" x="600" y="544" font-size="12" font-weight="800" fill="#E86A4F" text-anchor="middle" letter-spacing="1.5">EMAIL</text><text class="mono" x="855" y="544" font-size="12" font-weight="800" fill="#4F46EF" text-anchor="middle" letter-spacing="1.5">EXTERNAL</text></svg>

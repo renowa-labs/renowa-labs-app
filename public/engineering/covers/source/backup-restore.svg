@@ -1,0 +1,17 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .mono { font-family: "Courier New", Courier, monospace; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L9,5 L0,10 Z" fill="context-stroke"/>
+    </marker>
+    <pattern id="paper" width="9" height="9" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.45" fill="#162A3D" opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#CAD9E0"/>
+  <rect width="1200" height="630" fill="url(#paper)" opacity="0.42"/>
+<circle cx="600" cy="315" r="213" fill="#F8F5EE" stroke="#162A3D" stroke-width="12"/><circle cx="600" cy="315" r="168" fill="none" stroke="#B8C3C6" stroke-width="3"/><line x1="600" y1="315" x2="600" y2="205" stroke="#162A3D" stroke-width="10" /><line x1="600" y1="315" x2="690" y2="367" stroke="#162A3D" stroke-width="10" /><circle cx="600" cy="315" r="18" fill="#E86832" stroke="none" stroke-width="1"/><rect x="525" y="62" width="150" height="66" rx="34" fill="#162A3D" stroke="#162A3D" stroke-width="1"/><rect x="561" y="42" width="78" height="30" rx="15" fill="#E86832" stroke="#E86832" stroke-width="1"/><text x="600" y="312" font-size="32" font-weight="800" fill="#162A3D" text-anchor="middle" letter-spacing="-1">RESTORE</text><text class="mono" x="600" y="349" font-size="14" font-weight="800" fill="#E86832" text-anchor="middle" letter-spacing="2">WITH A CLOCK</text></svg>

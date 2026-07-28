@@ -1,0 +1,17 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .mono { font-family: "Courier New", Courier, monospace; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L9,5 L0,10 Z" fill="context-stroke"/>
+    </marker>
+    <pattern id="paper" width="9" height="9" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.45" fill="#181818" opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#F0ECE4"/>
+  <rect width="1200" height="630" fill="url(#paper)" opacity="0.42"/>
+<rect x="168" y="112" width="864" height="406" rx="18" fill="#FFFFFF" stroke="#181818" stroke-width="2"/><rect x="168" y="112" width="864" height="93" rx="18" fill="#24231F" stroke="#24231F" stroke-width="1"/><rect x="168" y="178" width="864" height="27" rx="0" fill="#24231F" stroke="#24231F" stroke-width="1"/><text class="mono" x="214" y="165" font-size="13" font-weight="700" fill="#C7C2B8" letter-spacing="2">ACCOUNT OWNER</text><text x="214" y="312" font-size="57" font-weight="800" fill="#181818" letter-spacing="-2">founder@personal</text><line x1="214" y1="345" x2="986" y2="345" stroke="#E1DDD4" stroke-width="2" /><text class="mono" x="214" y="384" font-size="15" font-weight="700" fill="#6B665E" letter-spacing="1">DOMAIN · CLOUD · CODE · BANK · PAYMENTS</text><g transform="rotate(-8 841 410)"><rect x="712" y="364" width="256" height="94" rx="4" fill="#F8E2DE" stroke="#CB5E50" stroke-width="5"/><text x="840" y="415" font-size="25" font-weight="800" fill="#CB5E50" text-anchor="middle">SINGLE POINT</text><text class="mono" x="840" y="438" font-size="12" font-weight="800" fill="#CB5E50" text-anchor="middle" letter-spacing="1.5">OF FAILURE</text></g></svg>

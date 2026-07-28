@@ -1,0 +1,17 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .mono { font-family: "Courier New", Courier, monospace; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L9,5 L0,10 Z" fill="context-stroke"/>
+    </marker>
+    <pattern id="paper" width="9" height="9" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.45" fill="#171715" opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#E8DB70"/>
+  <rect width="1200" height="630" fill="url(#paper)" opacity="0.42"/>
+<rect x="220" y="83" width="760" height="465" rx="3" fill="#FAF6D7" stroke="#171715" stroke-width="2"/><text class="mono" x="264" y="136" font-size="14" font-weight="700" fill="#6D684B" letter-spacing="2">MODEL OUTPUT</text><line x1="264" y1="167" x2="936" y2="167" stroke="#C9BC5A" stroke-width="2" /><line x1="264" y1="225" x2="792" y2="225" stroke="#D5CA7B" stroke-width="8" /><line x1="264" y1="255" x2="870" y2="255" stroke="#D5CA7B" stroke-width="8" /><line x1="264" y1="285" x2="728" y2="285" stroke="#D5CA7B" stroke-width="8" /><line x1="264" y1="315" x2="831" y2="315" stroke="#D5CA7B" stroke-width="8" /><line x1="264" y1="345" x2="762" y2="345" stroke="#D5CA7B" stroke-width="8" /><g transform="rotate(-11 606 363)"><rect x="405" y="278" width="402" height="146" rx="4" fill="#F9E1DB" stroke="#E86A55" stroke-width="6"/><text x="606" y="366" font-size="62" font-weight="800" fill="#E86A55" text-anchor="middle" letter-spacing="-2">TEST IT</text><text class="mono" x="606" y="398" font-size="13" font-weight="800" fill="#E86A55" text-anchor="middle" letter-spacing="2">BEFORE YOU TUNE IT</text></g></svg>

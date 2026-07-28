@@ -4,10 +4,10 @@ import { SITE_DESCRIPTION } from "@/data/site";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Renowa Labs — AI-Powered Software Products",
+  title: "Products for Humans and AI",
   description: SITE_DESCRIPTION,
   path: "/",
-  imageAlt: "Renowa Labs — AI-powered software products",
+  imageAlt: "Renowa Labs — products that make humans' and AIs' lives easier",
 });
 
 export default function Home() {

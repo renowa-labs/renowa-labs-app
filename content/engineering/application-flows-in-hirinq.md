@@ -9,7 +9,7 @@ tags:
   - Recruitment Technology
   - Candidate Experience
 relatedProduct: hirinq
-coverImage: /og/renowa-og.svg
+coverImage: /engineering/covers/application-flows.webp
 canonicalUrl: https://www.renowa-labs.com/engineering/application-flows-in-hirinq
 indexable: false
 status: draft

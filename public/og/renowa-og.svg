@@ -6,5 +6,5 @@
   <path d="M120 156H286V248H120V156Z" stroke="#F8FBFA" stroke-width="10" stroke-linejoin="round"/>
   <path d="M252 248L326 302" stroke="#D8D8D2" stroke-width="10" stroke-linecap="round"/>
   <text x="120" y="398" fill="#E7E7E2" font-family="Courier New, monospace" font-size="86" font-weight="700" letter-spacing="8">Renowa Labs</text>
-  <text x="124" y="466" fill="#8C8C87" font-family="Courier New, monospace" font-size="30" letter-spacing="3">AI-first products, built  for the world.</text>
+  <text x="124" y="466" fill="#8C8C87" font-family="Courier New, monospace" font-size="25" letter-spacing="2">Products that make humans' and AIs' lives easier.</text>
 </svg>
