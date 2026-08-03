@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { ThemeToggle } from "@/components/site/ThemeToggle";
 import { CONTACT_EMAIL, NAV_ITEMS, SITE_POSITIONING } from "@/data/site";
@@ -223,9 +224,11 @@ export function Header() {
                 </p>
                 <div className="grid gap-3">
                   {products.map((product, index) => (
-                    <Link
+                    <TrackedLink
                       key={product.slug}
                       href={`/products/${product.slug}`}
+                      eventName="product_click"
+                      eventParams={{ product_name: product.name, destination: `/products/${product.slug}` }}
                       tabIndex={open ? undefined : -1}
                       onClick={() => setOpen(false)}
                       className="group grid grid-cols-[2.5rem_1fr_auto] items-center gap-3 rounded-sm border-b border-[var(--border)] pb-3 text-sm transition hover:border-[color:var(--foreground)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
@@ -237,7 +240,7 @@ export function Header() {
                       <span className="text-[11px] uppercase tracking-[0.16em] text-[color:var(--muted-foreground)]">
                         {product.status}
                       </span>
-                    </Link>
+                    </TrackedLink>
                   ))}
                 </div>
               </section>
@@ -248,13 +251,15 @@ export function Header() {
                 <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[color:var(--muted-foreground)]">
                   Let&apos;s talk
                 </p>
-                <a
+                <TrackedLink
                   href={`mailto:${CONTACT_EMAIL}`}
+                  eventName="email_click"
+                  eventParams={{ link_text: CONTACT_EMAIL, location: "header_menu" }}
                   tabIndex={open ? undefined : -1}
                   className="inline-flex rounded-sm text-xl font-semibold leading-tight underline decoration-[var(--border)] underline-offset-8 transition hover:text-[color:var(--muted-foreground)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
                 >
                   {CONTACT_EMAIL}
-                </a>
+                </TrackedLink>
               </section>
             </div>
           </div>

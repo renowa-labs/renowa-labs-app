@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { buttonClassName } from "@/components/ui/Button";
 import { CONTACT_EMAIL } from "@/data/site";
+import { trackEvent } from "@/lib/analytics";
 import { contactFormSchema, type ContactFormData, type ContactFormInput } from "@/lib/contact/schema";
 import type { ContactApiResponse } from "@/lib/contact/types";
 
@@ -73,6 +74,7 @@ export function ContactForm() {
           action: {
             label: "Email us",
             onClick: () => {
+              trackEvent("email_click", { link_text: "Email us", location: "contact_form_error" });
               window.location.href = `mailto:${CONTACT_EMAIL}`;
             },
           },
@@ -82,6 +84,7 @@ export function ContactForm() {
 
       resetTurnstile();
       reset();
+      trackEvent("generate_lead", { form_name: "contact", method: "contact_form" });
       toast.success("Message sent", {
         description: "Thanks for reaching out. We will get back to you soon.",
       });
@@ -92,6 +95,7 @@ export function ContactForm() {
         action: {
           label: "Email us",
           onClick: () => {
+            trackEvent("email_click", { link_text: "Email us", location: "contact_form_error" });
             window.location.href = `mailto:${CONTACT_EMAIL}`;
           },
         },

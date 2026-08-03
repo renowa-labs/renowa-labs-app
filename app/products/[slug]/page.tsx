@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Footer } from "@/components/site/Footer";
 import { AppStoreIcon } from "@/components/ui/AppStoreIcon";
@@ -129,17 +130,24 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                 {product.fullDescription}
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <a
+                <TrackedLink
                   href={product.externalUrl}
+                  eventName="outbound_product_click"
+                  eventParams={{ product_name: product.name, destination: product.externalUrl }}
                   style={launchStyle}
                   className={buttonClassName({ variant: "primary", className: "product-launch-button w-full sm:w-auto" })}
                 >
                   {product.launchIcon !== "none" ? <AppStoreIcon className="size-4 shrink-0" /> : null}
                   {launchLabel}
-                </a>
-                <ButtonLink href="/contact" variant="secondary" className="w-full sm:w-auto">
+                </TrackedLink>
+                <TrackedLink
+                  href="/contact"
+                  eventName="contact_cta_click"
+                  eventParams={{ cta_text: "Discuss a product", location: "product_detail" }}
+                  className={buttonClassName({ variant: "secondary", className: "w-full sm:w-auto" })}
+                >
                   Discuss a product
-                </ButtonLink>
+                </TrackedLink>
               </div>
             </div>
 
@@ -245,16 +253,18 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               </div>
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {relatedProducts.map((related) => (
-                  <Link
+                  <TrackedLink
                     key={related.slug}
                     href={`/products/${related.slug}`}
+                    eventName="product_click"
+                    eventParams={{ product_name: related.name, destination: `/products/${related.slug}` }}
                     className="rounded-[6px] border border-[var(--border)] bg-[rgba(255,255,255,0.018)] p-5 transition hover:border-[rgba(255,255,255,0.28)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
                   >
                     <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--foreground)]">{related.name}</h3>
                     <p className="mt-2 text-xs leading-6 text-[color:var(--muted-foreground)]">
                       {related.shortDescription}
                     </p>
-                  </Link>
+                  </TrackedLink>
                 ))}
               </div>
             </section>

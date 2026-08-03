@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 import { Footer } from "@/components/site/Footer";
 import { Container } from "@/components/ui/Container";
 import { CONTACT_EMAIL } from "@/data/site";
@@ -34,9 +35,14 @@ export default function PrivacyPage() {
               <h2 className="text-xl font-semibold text-[color:var(--foreground)]">Questions</h2>
               <p className="mt-3">
                 For a privacy question or a request concerning information you submitted, email{" "}
-                <a className="text-[color:var(--foreground)] underline underline-offset-4" href={`mailto:${CONTACT_EMAIL}`}>
+                <TrackedLink
+                  className="text-[color:var(--foreground)] underline underline-offset-4"
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  eventName="email_click"
+                  eventParams={{ link_text: CONTACT_EMAIL, location: "privacy" }}
+                >
                   {CONTACT_EMAIL}
-                </a>
+                </TrackedLink>
                 . You can also return to the <Link className="text-[color:var(--foreground)] underline underline-offset-4" href="/contact">contact page</Link>.
               </p>
             </section>
@@ -47,4 +53,3 @@ export default function PrivacyPage() {
     </>
   );
 }
-

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 import { CONTACT_EMAIL, LINKEDIN_URL, SITE_POSITIONING } from "@/data/site";
 import { getIndexableProducts } from "@/data/products";
 import { Container } from "@/components/ui/Container";
@@ -70,9 +71,15 @@ export function Footer() {
             <div className="grid gap-3">
               <p className="text-[color:var(--foreground)]">Products</p>
               {products.map((product) => (
-                <Link key={product.slug} href={`/products/${product.slug}`} className={footerLinkClass}>
+                <TrackedLink
+                  key={product.slug}
+                  href={`/products/${product.slug}`}
+                  eventName="product_click"
+                  eventParams={{ product_name: product.name, destination: `/products/${product.slug}` }}
+                  className={footerLinkClass}
+                >
                   {product.name}
-                </Link>
+                </TrackedLink>
               ))}
             </div>
             <div className="grid gap-3">
@@ -85,12 +92,14 @@ export function Footer() {
         </div>
 
         <div className="grid gap-5 border-t border-[var(--border)] pt-6 text-[12px] text-[color:var(--muted-foreground)] sm:grid-cols-[1fr_auto] sm:items-center">
-          <a
+          <TrackedLink
             href={`mailto:${CONTACT_EMAIL}`}
+            eventName="email_click"
+            eventParams={{ link_text: CONTACT_EMAIL, location: "footer" }}
             className="inline-flex w-fit rounded-sm text-[color:var(--foreground)] underline decoration-[rgba(255,255,255,0.28)] underline-offset-4 transition hover:opacity-70 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
           >
             {CONTACT_EMAIL}
-          </a>
+          </TrackedLink>
           <div className="flex flex-wrap gap-x-5 gap-y-2 sm:justify-end">
             <p>{year} Renowa Labs. All rights reserved.</p>
             <Link

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 import { NAV_ITEMS } from "@/data/site";
 import { products } from "@/data/products";
 import { cn } from "@/lib/cn";
@@ -149,9 +150,11 @@ export function RouteRail() {
             const isLastProduct = productIndex === products.length - 1;
 
             return (
-              <Link
+              <TrackedLink
                 key={product.slug}
                 href={href}
+                eventName="product_click"
+                eventParams={{ product_name: product.name, destination: href }}
                 aria-current={active ? "page" : undefined}
                 onClick={() => setOpen(false)}
                 tabIndex={open ? undefined : -1}
@@ -173,7 +176,7 @@ export function RouteRail() {
                 </span>
                 <span className="text-[10px]">{product.icon}</span>
                 <span>{product.name}</span>
-              </Link>
+              </TrackedLink>
             );
           })}
         </div>

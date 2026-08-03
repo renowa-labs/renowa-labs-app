@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 import { products } from "@/data/products";
 import { AnimatedSignalField } from "@/components/brand/AnimatedSignalField";
 import { RenowaGlyphMark } from "@/components/brand/RenowaGlyphMark";
@@ -54,9 +55,11 @@ export function HomePortal() {
 
           <div className="home-reveal mt-7 flex flex-wrap justify-center gap-x-7 gap-y-3">
             {products.map((product, index) => (
-              <Link
+              <TrackedLink
                 key={product.slug}
                 href={`/products/${product.slug}`}
+                eventName="product_click"
+                eventParams={{ product_name: product.name, destination: `/products/${product.slug}` }}
                 className="group inline-flex items-baseline gap-2 rounded-sm px-1 py-1 text-[12px] uppercase tracking-[0.22em] text-[color:var(--foreground)] transition duration-300 hover:-translate-y-0.5 hover:text-[color:var(--foreground)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
               >
                 <span className="text-[color:var(--muted-foreground)]">[{String(index + 1).padStart(2, "0")}]</span>
@@ -64,7 +67,7 @@ export function HomePortal() {
                 <span className="hidden text-[10px] lowercase tracking-[0.08em] text-[color:var(--muted-foreground)] sm:inline">
                   / {product.category}
                 </span>
-              </Link>
+              </TrackedLink>
             ))}
           </div>
           <div className="home-reveal mt-7 flex flex-wrap justify-center gap-5 text-[12px] uppercase tracking-[0.2em] text-[color:var(--muted-foreground)]">
@@ -80,12 +83,14 @@ export function HomePortal() {
             >
               About
             </Link>
-            <Link
+            <TrackedLink
               href="/contact"
+              eventName="contact_cta_click"
+              eventParams={{ cta_text: "Contact", location: "home" }}
               className="transition hover:text-[color:var(--foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
             >
               Contact
-            </Link>
+            </TrackedLink>
           </div>
         </section>
       </div>

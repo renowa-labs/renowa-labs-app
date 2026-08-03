@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 import { ArticleBody } from "@/components/engineering/ArticleBody";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Footer } from "@/components/site/Footer";
-import { ButtonLink } from "@/components/ui/Button";
+import { ButtonLink, buttonClassName } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { CONTACT_EMAIL, SITE_NAME, SITE_URL } from "@/data/site";
 import { getProduct } from "@/data/products";
@@ -158,9 +159,17 @@ export default async function EngineeringArticlePage({ params }: EngineeringArti
                     <p className="text-[10px] uppercase tracking-[0.24em] text-[color:var(--muted-foreground)]">Related product</p>
                     <h2 className="mt-3 text-lg font-semibold text-[color:var(--foreground)]">{relatedProduct.name}</h2>
                     <p className="mt-3 text-xs leading-6 text-[color:var(--muted-foreground)]">{relatedProduct.shortDescription}</p>
-                    <ButtonLink href={`/products/${relatedProduct.slug}`} variant="secondary" className="mt-5 w-full">
+                    <TrackedLink
+                      href={`/products/${relatedProduct.slug}`}
+                      eventName="product_click"
+                      eventParams={{
+                        product_name: relatedProduct.name,
+                        destination: `/products/${relatedProduct.slug}`,
+                      }}
+                      className={buttonClassName({ variant: "secondary", className: "mt-5 w-full" })}
+                    >
                       View product
-                    </ButtonLink>
+                    </TrackedLink>
                   </section>
                 ) : null}
                 <ButtonLink href="/engineering" variant="ghost" className="w-full">

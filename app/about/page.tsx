@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 import { Footer } from "@/components/site/Footer";
-import { ButtonLink } from "@/components/ui/Button";
+import { buttonClassName } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { LINKEDIN_URL, SITE_DESCRIPTION } from "@/data/site";
@@ -109,9 +110,14 @@ export default function AboutPage() {
               <h2 className="mt-3 text-2xl font-semibold text-[color:var(--foreground)]">Need help building a product?</h2>
               <p className="mt-3 max-w-xl text-sm leading-7 text-[color:var(--muted-foreground)]">Tell us what you are working on.</p>
             </div>
-            <ButtonLink href="/contact" className="mt-6 shrink-0 sm:mt-0">
+            <TrackedLink
+              href="/contact"
+              eventName="contact_cta_click"
+              eventParams={{ cta_text: "Work with us", location: "about" }}
+              className={buttonClassName({ className: "mt-6 shrink-0 sm:mt-0" })}
+            >
               Work with us
-            </ButtonLink>
+            </TrackedLink>
           </section>
         </Container>
       </main>

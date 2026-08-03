@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { Header } from "@/components/site/Header";
 import { PageTransition } from "@/components/site/PageTransition";
@@ -110,6 +111,7 @@ export default function RootLayout({
         <PageTransition>{children}</PageTransition>
         <ToastProvider />
         <JsonLd data={structuredData} />
+        {process.env.NEXT_PUBLIC_GA_ID ? <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} /> : null}
       </body>
     </html>
   );

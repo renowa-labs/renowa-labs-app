@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { type CSSProperties, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 import type { Product } from "@/data/products";
 import { AppStoreIcon } from "@/components/ui/AppStoreIcon";
 import { buttonClassName } from "@/components/ui/Button";
@@ -80,21 +80,25 @@ export function ProductCard({ product }: { product: Product }) {
         </div>
       </div>
       <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-        <a
+        <TrackedLink
           href={product.externalUrl}
+          eventName="outbound_product_click"
+          eventParams={{ product_name: product.name, destination: product.externalUrl }}
           style={launchStyle}
           className={buttonClassName({ variant: "secondary", className: "product-launch-button w-full sm:w-auto" })}
           aria-label={`Open ${product.name} ${launchLabel}`}
         >
           {product.launchIcon !== "none" ? <AppStoreIcon className="size-4 shrink-0" /> : null}
           {launchLabel}
-        </a>
-        <Link
+        </TrackedLink>
+        <TrackedLink
           href={`/products/${product.slug}`}
+          eventName="product_click"
+          eventParams={{ product_name: product.name, destination: `/products/${product.slug}` }}
           className="inline-flex min-h-10 items-center justify-center rounded-sm px-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-[color:var(--muted-foreground)] transition hover:text-[color:var(--foreground)] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)] sm:justify-start"
         >
           View product
-        </Link>
+        </TrackedLink>
       </div>
     </article>
   );

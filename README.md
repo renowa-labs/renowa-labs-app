@@ -82,7 +82,7 @@ After the production domain is live:
 5. Test structured data with Google Rich Results Test and Schema.org Validator after deployment.
 6. Recheck page indexing whenever a draft is promoted or a product's `indexable` flag changes.
 
-No analytics provider is installed in this repository. Add one only with an explicit privacy and consent decision.
+GA4 is installed through `@next/third-parties/google`; see [docs/analytics.md](docs/analytics.md) for the measurement ID, events, and UTM links. No other analytics provider is configured.
 
 ## Optional IndexNow submission
 
