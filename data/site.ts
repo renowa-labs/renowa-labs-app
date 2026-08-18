@@ -12,7 +12,7 @@ export const CONTACT_EMAIL = "info@renowa-labs.com";
 
 export const LINKEDIN_URL = "https://www.linkedin.com/company/renowa-labs/";
 
-export const SITE_UPDATED_AT = "2026-07-22";
+export const SITE_UPDATED_AT = "2026-08-18";
 
 export const COMPANY_KNOWS_ABOUT = [
   "AI products",

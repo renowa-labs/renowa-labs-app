@@ -51,6 +51,54 @@ export type Product = {
 
 export const products = [
   {
+    slug: "orriii",
+    name: "Orriii",
+    domain: "https://orriii.renowa-labs.com",
+    tagline: "Turn the map into a game.",
+    shortDescription:
+      "A mobile orienteering app that turns real places into playable routes filled with checkpoints and discoveries.",
+    fullDescription:
+      "Orriii turns parks, resorts, campuses, and neighbourhoods into real-world adventures. Explorers follow a live route, find checkpoints, and collect progress as they move, while organizers and partners can create playful experiences around the places they want people to discover.",
+    status: "Coming Soon",
+    category: "Sports & Recreation",
+    year: "2026",
+    platforms: ["iOS"],
+    features: [
+      "Explore curated outdoor routes",
+      "Follow live progress on the map",
+      "Find and collect checkpoints",
+      "See the distance to the next stop",
+      "Complete routes and track achievements",
+      "Create playable experiences for real places",
+    ],
+    problem: "Outdoor places can be difficult to explore without a clear reason to move beyond the familiar path.",
+    solution: "Playable routes and collectible checkpoints turn movement through a real place into a guided adventure.",
+    audience: ["Outdoor explorers", "Families and communities", "Parks, resorts, campuses, and event organizers"],
+    images: [
+      {
+        src: "/products/orriii/app-icon.png",
+        alt: "Orriii mobile orienteering app icon",
+        width: 1024,
+        height: 1024,
+      },
+    ],
+    logo: "/products/orriii/app-icon.png",
+    relatedArticles: [],
+    externalUrl: "https://orriii.renowa-labs.com",
+    publishedAt: null,
+    updatedAt: "2026-08-18",
+    seoTitle: "Orriii — Mobile Orienteering App",
+    seoDescription:
+      "Orriii is a mobile orienteering app by Renowa Labs that turns parks, resorts, campuses, and neighbourhoods into real-world adventures.",
+    indexable: true,
+    accent: "#f16a0a",
+    cardTags: ["Mobile", "Outdoor", "Orienteering"],
+    icon: "O",
+    featureHeading: "Every place can become an adventure.",
+    launchLabel: "Explore Orriii",
+    launchIcon: "none",
+  },
+  {
     slug: "save-more-dreams",
     name: "Save More Dreams",
     domain: "https://apps.apple.com/us/app/save-more-dreams/id6764151038",

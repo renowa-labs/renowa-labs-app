@@ -9,7 +9,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = createPageMetadata({
   title: "Products",
   description:
-    "Explore real AI-powered software products from Renowa Labs across personal finance, cybersecurity, and recruitment technology.",
+    "Explore software products from Renowa Labs across outdoor recreation, personal finance, cybersecurity, and recruitment technology.",
   path: "/products",
 });
 
