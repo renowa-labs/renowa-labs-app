@@ -59,7 +59,7 @@ export const products = [
       "A mobile orienteering app that turns real places into playable routes filled with checkpoints and discoveries.",
     fullDescription:
       "Orriii turns parks, resorts, campuses, and neighbourhoods into real-world adventures. Explorers follow a live route, find checkpoints, and collect progress as they move, while organizers and partners can create playful experiences around the places they want people to discover.",
-    status: "Coming Soon",
+    status: "Live on App Store",
     category: "Sports & Recreation",
     year: "2026",
     platforms: ["iOS"],
@@ -84,7 +84,7 @@ export const products = [
     ],
     logo: "/products/orriii/app-icon.png",
     relatedArticles: [],
-    externalUrl: "https://orriii.renowa-labs.com",
+    externalUrl: "https://apps.apple.com/az/app/orin-discover-city/id6782856488",
     publishedAt: null,
     updatedAt: "2026-08-18",
     seoTitle: "Orriii — Mobile Orienteering App",
@@ -95,8 +95,8 @@ export const products = [
     cardTags: ["Mobile", "Outdoor", "Orienteering"],
     icon: "O",
     featureHeading: "Every place can become an adventure.",
-    launchLabel: "Explore Orriii",
-    launchIcon: "none",
+    launchLabel: "Open App Store",
+    launchIcon: "app-store",
   },
   {
     slug: "save-more-dreams",
