@@ -46,7 +46,7 @@ export default function PonderletPrivacyPage() {
             </section>
             <section className="grid gap-3">
               <h2 className={headingClass}>Service providers and disclosure</h2>
-              <p>The feedback API runs on Heroku, a Salesforce service. Feedback submissions are stored using MongoDB Atlas. Our email service handles messages sent to our support address. We use these services for hosting, storage, security, and support. Their privacy and processing terms also apply to their services.</p>
+              <p>The feedback API runs on Heroku, a Salesforce service. Feedback submissions are stored using MongoDB Atlas. Our email service handles messages sent to our support address. We use these services for hosting, storage, security, and support. Their privacy and processing terms also apply to their services. We require service providers handling information on our behalf to provide at least the same protection described in this policy and required by applicable data-protection requirements.</p>
               <p>Service providers may process information in countries other than your own. We may disclose information where required by applicable law or where necessary to protect the service, its users, or legal rights.</p>
             </section>
             <section className="grid gap-3">
