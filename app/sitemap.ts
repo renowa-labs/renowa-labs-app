@@ -7,11 +7,11 @@ import { absoluteUrl } from "@/lib/seo";
 const lastModified = new Date(SITE_UPDATED_AT);
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["", "/products", "/engineering", "/about", "/contact", "/privacy"].map((route) => ({
+  const routes = ["", "/products", "/engineering", "/about", "/contact", "/privacy", "/privacy/ponderlet", "/support/ponderlet"].map((route) => ({
     url: `${SITE_URL}${route}`,
-    lastModified,
+    lastModified: route.startsWith("/privacy") || route.startsWith("/support") ? new Date("2026-11-11") : lastModified,
     changeFrequency: "monthly" as const,
-    priority: route === "" ? 1 : route === "/privacy" ? 0.3 : 0.8,
+    priority: route === "" ? 1 : route.startsWith("/privacy") || route.startsWith("/support") ? 0.3 : 0.8,
   }));
 
   const productRoutes = getIndexableProducts().map((product) => ({
